@@ -1,0 +1,35 @@
+
+.debug {
+	background-color: orange;
+	border: double;
+  margin-top: 20px;
+}
+
+header {
+	background-color: lightgrey;
+	border: double;
+	border-color: darkgrey;
+	border-spacing: 10px;
+}
+
+footer {
+	background-color: lightgrey;
+	border: double;
+	border-color: darkgrey;
+	border-spacing: 10px;
+}
+
+.alert {
+	margin: 10px;
+
+	&.alert-success {
+		background-color: green;
+		color: black;
+	}
+
+	&.alert-error {
+		background-color: red;
+		color: black;
+	}
+
+}

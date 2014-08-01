@@ -1,6 +1,15 @@
 
-<div>
-  <%= link_to "Home",    root_path %> <b>|</b>
-  <%= link_to "Help",    help_path %> <b>|</b>
-  <%= link_to "Sign in", '#' %> <b>|</b>
-</div>
+<nav>
+	<%= link_to "Home",    root_path %> <b>|</b>
+	<%= link_to "Help",    help_path %> <b>|</b>
+
+	<% if signed_in? %>
+		<%= link_to "Users", '#' %> <b>|</b>
+		<%= link_to "Profile", current_user %> <b>|</b>
+		<%= link_to "Settings", '#' %> <b>|</b>
+		<%= link_to "Sign out", signout_path, method: "delete" %>
+	<% else %>
+		<%= link_to "Sign in", signin_path %>
+	<% end %>
+
+</nav>

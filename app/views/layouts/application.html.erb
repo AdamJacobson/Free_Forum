@@ -9,10 +9,7 @@
 	<%= render 'layouts/shim' %>
 </head>
 <body>
-	<header>
-		<h1>Free Forum</h1>
-		<%= render 'layouts/nav' %>
-	</header>	
+	<%= render 'layouts/header' %>
 	<hr/>
 
 	<% flash.each do |key, value| %>
@@ -24,8 +21,7 @@
 	<hr/>
 
 	<%= render 'layouts/footer' %>
-	<div class="debug">
-		<%= debug(params) if Rails.env.development? %>
-	</div>
+
+	<%= render 'shared/debug' %>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<table class="users">
+	<tr>
+		<th>Username</th>
+		<th>Posts</th>
+		<th>Reputation</th>
+		<th>Rank</th>
+	</tr>
+
+	<% @users.each do |user| %>
+	<tr>
+		<td>
+			<%= link_to user.username, user %>
+		</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>
+		<% if current_user.admin? && !current_user?(user) %>
+    <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+		</td>
+  <% end %>
+	</tr>
+	<% end %>
+</table>
+
+<%= will_paginate %>

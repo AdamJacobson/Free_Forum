@@ -26,19 +26,26 @@ footer {
 .alert {
 	margin: 10px;
 	padding: 5px;
+	color: black;
 
 	&.alert-success {
 		background-color: green;
-		color: black;
 	}
 
 	&.alert-error {
 		background-color: red;
-		color: black;
 	}
 
 	&.alert-alert {
 		background-color: orange;
-		color: black;
 	}
+
+	&.alert-notice {
+		background-color: yellow;
+	}
+}
+
+.users, th, td {
+	border:1px solid black;
+	border-collapse:collapse
 }

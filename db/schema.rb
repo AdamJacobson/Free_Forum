@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804211637) do
+ActiveRecord::Schema.define(version: 20140805185940) do
+
+  create_table "boards", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "parent_board_id"
+    t.boolean  "locked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "board_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"

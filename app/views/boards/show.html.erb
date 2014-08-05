@@ -1,0 +1,20 @@
+<h1><%= @board.title %></h1>
+
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Posts</th>
+		<th>Last Post</th>
+	</tr>
+	<% @board.topics.each do |topic| %>
+	<tr>
+		<th><%= link_to topic.title, topic %></th>
+		<th><%= link_to topic.user.username, topic.user %></th>
+		<th>Posts</th>
+		<th>Last Post</th>
+	</tr>
+	<% end %>
+</table>
+

@@ -9,4 +9,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :topic do
+  	title "test"
+  	board_id 1
+  end
 end

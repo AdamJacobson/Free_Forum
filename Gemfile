@@ -6,6 +6,7 @@ gem 'rails', '4.0.5'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
+gem 'debugger'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -1,12 +1,18 @@
 class BoardsController < ApplicationController
-  def show
-  	@board = Board.find(params[:id])
-  end
+	
+	def show
+		@board = Board.find(params[:id])
+		@topics = @board.topics.paginate(page: params[:page])
+	end
 
-  def index
-  	@boards = Board.paginate(page: params[:page])
-  end
+	def index
+		@boards = Board.paginate(page: params[:page])
+	end
 
-  def new
-  end
+	def new
+	end
+
+	def create_topic
+
+	end
 end

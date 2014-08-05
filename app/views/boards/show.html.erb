@@ -1,5 +1,7 @@
 <h1><%= @board.title %></h1>
+<h2><%= @board.description %></h2>
 
+<%= will_paginate @topics %>
 
 <table>
 	<tr>
@@ -7,14 +9,29 @@
 		<th>Author</th>
 		<th>Posts</th>
 		<th>Last Post</th>
+		<th>Created</th>
+		<th>Updated</th>
 	</tr>
-	<% @board.topics.each do |topic| %>
+	<% @topics.each do |topic| %>
 	<tr>
 		<th><%= link_to topic.title, topic %></th>
 		<th><%= link_to topic.user.username, topic.user %></th>
 		<th>Posts</th>
 		<th>Last Post</th>
+		<th><%= time_ago_in_words(topic.created_at) %> ago</th>
+		<th><%= time_ago_in_words(topic.updated_at) %> ago</th>
 	</tr>
 	<% end %>
 </table>
 
+<%= will_paginate @topics %>
+
+<hr/>
+
+<% if signed_in? %>
+
+Create a new topic
+
+<%= link_to "Create new topic", new_topic_path %>
+
+<% end %>

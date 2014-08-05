@@ -17,20 +17,21 @@ namespace :db do
                    password_confirmation: password)
     end
 
-    5.times do |n|
-      title = "Topic ##{n}"
-      user_id = 1
-      board_id = 1
+    25.times do |n|
+      title = "#{Faker::Lorem.word.upcase}"
+      description = "#{Faker::Lorem.words.join(" ")}"
+      Board.create!(title: title,
+                    description: description)
+    end
+
+    300.times do |n|
+      title = "#{Faker::Lorem.words.join(" ")}"
+      user_id = rand(1..100)
+      board_id = rand(1..25)
       Topic.create!(title: title,
                     user_id: user_id,
                     board_id:board_id)
     end
 
-    5.times do |n|
-      title = "Board ##{n}"
-      description = "description"
-      Board.create!(title: title,
-                    description: description)
-    end
   end
 end

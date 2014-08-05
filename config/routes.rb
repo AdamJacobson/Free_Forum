@@ -10,7 +10,10 @@ FreeForum::Application.routes.draw do
  	match '/signin',  to: 'sessions#new',         via: 'get'
 	match '/signout', to: 'sessions#destroy',     via: 'delete'
   
-  resources :topics
+  resources :topics, only: [:show, :create, :destroy]
 
   resources :boards
+	match '/boards/:id/new', to: 'topics#new',     via: 'get', as: 'new_topic'
+	match '/boards/:id/new', to: 'topics#create',     via: 'post'
+
 end

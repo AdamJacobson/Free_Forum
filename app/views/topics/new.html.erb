@@ -1,2 +1,16 @@
-<h1>Topics#new</h1>
-<p>Find me in app/views/topics/new.html.erb</p>
+<h1>Create new topic</h1>
+
+Return to <%= link_to @board.title, @board %>
+
+<div>
+	<%= form_for :topic do |f| %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+
+	<%= f.submit "Post new topic", class: "button submit" %>
+	<% end %>
+</div>

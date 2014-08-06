@@ -11,7 +11,12 @@ FactoryGirl.define do
   end
 
   factory :topic do
-  	title "test"
+  	title "Test Topic"
   	board_id 1
+  end
+
+  factory :board do
+    title "Test Board"
+    description "Test description"
   end
 end

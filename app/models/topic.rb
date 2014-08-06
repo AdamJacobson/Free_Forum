@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :board
+	has_many :posts
 
 	self.per_page = 15
 
@@ -10,4 +11,13 @@ class Topic < ActiveRecord::Base
 
 	# Temporary holder for new topic content
 	attr_accessor :content
+
+	def last_page
+		posts_num = self.posts.count
+		if posts_num == 0
+			1
+		else
+			(posts_num / Post.per_page.to_f).ceil
+		end
+	end
 end

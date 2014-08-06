@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Topic do
+  let(:board) { FactoryGirl.create(:board) }
   let(:user) { FactoryGirl.create(:user) }
-  before { @topic = user.topics.build(title: "New", board_id: 1) }
+  before { @topic = user.topics.build(title: "New", board_id: board.id) }
 
   subject { @topic }
 
@@ -12,6 +13,9 @@ describe Topic do
 
   it { should respond_to(:user) }
   its(:user) { should eq user }
+
+  it { should respond_to(:board) }
+  its(:board) { should eq board }
 
   it { should be_valid }
 
@@ -29,6 +33,5 @@ describe Topic do
     before { @topic = Topic.new(title: "new", user_id: 1, board_id: nil) }
     it { should_not be_valid }
   end
-
 
 end

@@ -3,7 +3,9 @@
 Return to <%= link_to @board.title, @board %>
 
 <div>
-	<%= form_for :topic do |f| %>
+	<%= form_for(:topic) do |f| %>
+
+	<%= render 'shared/error_messages', object: @topic %>
 
 	<%= f.label :title %>
 	<%= f.text_field :title %>

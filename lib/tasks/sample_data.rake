@@ -2,26 +2,26 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     User.create!(username: "Example User",
-                 email: "example@railstutorial.org",
-                 password: "foobar",
-                 password_confirmation: "foobar",
-                 admin: true)
+     email: "example@railstutorial.org",
+     password: "foobar",
+     password_confirmation: "foobar",
+     admin: true)
 
     99.times do |n|
       name  = "#{Faker::Name.first_name} #{rand(0..100)}"
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
       User.create!(username: name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password)
+       email: email,
+       password: password,
+       password_confirmation: password)
     end
 
     25.times do |n|
       title = "#{Faker::Lorem.word.upcase}"
       description = "#{Faker::Lorem.words.join(" ")}"
       Board.create!(title: title,
-                    description: description)
+        description: description)
     end
 
     300.times do |n|
@@ -29,8 +29,27 @@ namespace :db do
       user_id = rand(1..100)
       board_id = rand(1..25)
       Topic.create!(title: title,
-                    user_id: user_id,
-                    board_id:board_id)
+        user_id: user_id,
+        board_id:board_id)
+    end
+
+    # Busy topic
+    50.times do |n|
+      content = "#{Faker::Lorem.paragraph(2)}"
+      topic_id = 1
+      user_id = rand(1..100)
+      Post.create!(content: content,
+       topic_id: topic_id,
+       user_id: user_id)
+    end
+
+    1000.times do |n|
+      content = "#{Faker::Lorem.paragraph(2)}"
+      topic_id = rand(2..300)
+      user_id = rand(1..100)
+      Post.create!(content: content,
+       topic_id: topic_id,
+       user_id: user_id)
     end
 
   end

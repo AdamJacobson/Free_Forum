@@ -42,4 +42,9 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+  def log_last_action
+    session[:last_controller] = params[:controller]
+    session[:last_action] = params[:action]
+  end
+
 end

@@ -1,2 +1,12 @@
+<% provide(:title, "#{@board.title} | #{@topic.title}") %>
 <h1><%= @topic.title %></h1>
-Creator: <%= link_to "#{@topic.user.username}", user_path(@topic.user) %>
+
+Back to <%= link_to "#{@topic.board.title}", @topic.board %>
+
+<%= will_paginate @posts %>
+
+<%= render @posts %>
+
+<%= will_paginate @posts %>
+
+<%= link_to "Create new post", new_post_path%>

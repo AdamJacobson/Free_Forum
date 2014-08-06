@@ -1,3 +1,4 @@
+<% provide(:title, @board.title) %>
 <h1><%= @board.title %></h1>
 <h2><%= @board.description %></h2>
 
@@ -16,7 +17,7 @@
 	<tr>
 		<th><%= link_to topic.title, topic %></th>
 		<th><%= link_to topic.user.username, topic.user %></th>
-		<th>Posts</th>
+		<th><%= topic.posts.count %></th>
 		<th>Last Post</th>
 		<th><%= time_ago_in_words(topic.created_at) %> ago</th>
 		<th><%= time_ago_in_words(topic.updated_at) %> ago</th>
@@ -29,8 +30,6 @@
 <hr/>
 
 <% if signed_in? %>
-
-Create a new topic
 
 <%= link_to "Create new topic", new_topic_path %>
 

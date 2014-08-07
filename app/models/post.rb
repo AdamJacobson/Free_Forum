@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
 
 	validates :user_id, presence: true
 	validates :topic_id, presence: true
-	validates :content, presence: true, length: { minimum: 8 }
+	validates :content, length: { minimum: 8 }
 end

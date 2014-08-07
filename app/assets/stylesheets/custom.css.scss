@@ -45,7 +45,58 @@ footer {
 	}
 }
 
-.users, th, td {
-	border:1px solid black;
-	border-collapse:collapse
+/* Posts */
+.posts table, tr, td, th {
+
+	border: 2px solid black;
+	border-collapse: collapse;
+
+	&.posts {
+		width: 100%;
+	}
+
+	&.post {
+		color: blue;
+	}
+
+	&.info {
+		width: 200px;
+		padding: 5px;
+		border: 2px solid black;
+	}
+
+	&.content {
+		width: 1000px;
+		margin: 5px;
+		white-space: word-wrap;
+		color: red;
+	}
+
+}
+
+.users table, tr, td, th {
+
+	border: 2px solid black;
+	border-collapse: collapse;
+
+	&.posts {
+		width: 100%;
+	}
+
+	&.post {
+		color: blue;
+	}
+
+	&.avatar {
+		width: 150px;
+		padding: 5px;
+		border: 2px solid black;
+	}
+
+	&.content {
+		margin: 5px;
+		white-space: word-wrap;
+		color: red;
+	}
+
 }

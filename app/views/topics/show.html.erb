@@ -5,7 +5,13 @@ Back to <%= link_to "#{@topic.board.title}", @topic.board %>
 
 <%= will_paginate @posts %>
 
+<table class="posts">
+	<tr>
+		<th>Author</th>
+		<th>Message</th>
+	</tr>
 <%= render @posts %>
+</table>
 
 <%= will_paginate @posts %>
 

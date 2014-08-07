@@ -1,7 +1,23 @@
-<hr/>
-<div class="post">
-	<div><%= post.content %></div>
-	<br/>
-	<div>Posted by <%= link_to "#{post.user.username}", post.user %> <%= time_ago_in_words(post.created_at)%> ago</div>
-	<div>Post id: <%= "#{post.id}" %><div>
-</div>
+<!-- <tr class="post" id="post-<%= post.id %>" > -->
+	<!-- <td class="avatar"><%= link_to "#{post.user.username}", post.user %></td> -->
+	<!-- <td class="content"><%= post.content %></td> -->
+<!-- </tr> -->
+
+<tr>
+	<td>
+		<table class="post info">
+			<tr><td><%= link_to "#{post.user.username}", post.user %></td></tr>
+			<tr><td>AVATAR</td></tr>
+			<tr><td><%= post.id %></td></tr>
+		</table>
+	</td>
+
+	<td>
+		<table class="post content">
+			<tr><td>Upper Content</td></tr>
+			<tr><td><%= post.content %></td></tr>
+			<tr><td>Lower Content</td></tr>
+		</table>
+	</td>
+</tr>
+

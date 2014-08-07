@@ -12,6 +12,7 @@ class Topic < ActiveRecord::Base
 	# Temporary holder for new topic content
 	attr_accessor :content
 
+	# Returns the last page index of the topic
 	def last_page
 		posts_num = self.posts.count
 		if posts_num == 0

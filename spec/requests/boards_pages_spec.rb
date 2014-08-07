@@ -23,14 +23,14 @@ describe "Boards pages" do
 		it { should have_content(board.description) }
 		it { should have_content(topic.title) }
 		it { should have_content(topic.user.username) }
-		it { should_not have_content('Create a new topic') }
+		it { should_not have_content('Create new topic') }
 
 		describe "when signed in" do
 			before do
 				sign_in(user)
 				visit board_path(board)
 			end
-			it { should have_content('Create a new topic') }
+			it { should have_content('Create new topic') }
 		end
 	end # / specific board
 

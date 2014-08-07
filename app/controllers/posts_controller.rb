@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Post Created"
-      redirect_to topic_path(@topic, :page => @topic.last_page)
+      redirect_to topic_path(@topic, :page => @topic.last_page, :anchor => "post-#{@post.id}") 
     else
       render 'new'
     end

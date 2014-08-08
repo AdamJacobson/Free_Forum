@@ -12,28 +12,18 @@ class TopicsController < ApplicationController
 	end
 
 	def new
-		@board = Board.find(params[:id])
-		@topic = Topic.new
-		@post = Post.new
+		@board = Board.find(params[:board_id])
+		@topic = @board.topics.build
+		@post = @topic.posts.build
 	end
 
 	def create
-		@board = Board.find(params[:id])
+		@board = Board.find(params[:board_id])
 		@topic = @board.topics.build(topic_params.merge({user_id: current_user.id}))
-		@post = Post.new
 
 		if @topic.save
-			post_content = {content: params[:topic][:content], user_id: current_user.id}
-			@post = @topic.posts.build(post_content)
-
-			if @post.save
-				flash[:success] = "Topic created"
-				redirect_to @topic
-			else
-				@topic.delete
-				render 'new'
-			end
-
+			flash[:success] = "Topic created"
+			redirect_to @topic
 		else
 			render 'new'
 		end
@@ -42,6 +32,6 @@ class TopicsController < ApplicationController
 	private
 
 	def topic_params
-		params.require(:topic).permit(:title, :content)
+		params.require(:topic).permit(:title, posts_attributes: [:id, :content])
 	end
 end

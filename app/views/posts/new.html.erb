@@ -2,7 +2,7 @@
 Return to <%= link_to "#{@topic.title}", @topic %>
 
 <div>
-	<%= form_for(:post) do |f| %>
+	<%= form_for [@topic, @post] do |f| %>
 
 	<%= render 'shared/error_messages', object: @post %>
 

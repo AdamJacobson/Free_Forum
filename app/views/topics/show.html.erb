@@ -15,4 +15,4 @@ Back to <%= link_to "#{@topic.board.title}", @topic.board %>
 
 <%= will_paginate @posts %>
 
-<%= link_to "Create new post", new_post_path%>
+<%= link_to "Create new post", new_topic_post_path(@topic) %>

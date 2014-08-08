@@ -8,11 +8,4 @@ class BoardsController < ApplicationController
 	def index
 		@boards = Board.paginate(page: params[:page])
 	end
-
-	def new
-	end
-
-	def create_topic
-
-	end
 end

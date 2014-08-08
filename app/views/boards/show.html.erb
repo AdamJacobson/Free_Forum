@@ -13,16 +13,7 @@
 		<th>Created</th>
 		<th>Updated</th>
 	</tr>
-	<% @topics.each do |topic| %>
-	<tr>
-		<th><%= link_to topic.title, topic %></th>
-		<th><%= link_to topic.user.username, topic.user %></th>
-		<th><%= topic.posts.count %></th>
-		<th>Last Post</th>
-		<th><%= time_ago_in_words(topic.created_at) %> ago</th>
-		<th><%= time_ago_in_words(topic.updated_at) %> ago</th>
-	</tr>
-	<% end %>
+	<%= render @topics %>
 </table>
 
 <%= will_paginate @topics %>
@@ -30,7 +21,5 @@
 <hr/>
 
 <% if signed_in? %>
-
-<%= link_to "Create new topic", new_topic_path %>
-
+	<%= link_to "Create new topic", new_board_topic_path(@board) %>
 <% end %>

@@ -1,0 +1,9 @@
+
+<tr>
+	<th><%= link_to topic.title, topic_path(topic) %></th>
+	<th><%= link_to topic.user.username, topic.user %></th>
+	<th><%= topic.posts.count %></th>
+	<th>Last Post</th>
+	<th><%= time_ago_in_words(topic.created_at) %> ago</th>
+	<th><%= time_ago_in_words(topic.updated_at) %> ago</th>
+</tr>

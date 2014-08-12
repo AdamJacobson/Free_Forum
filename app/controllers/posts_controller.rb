@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create]
 
+  # Post are not displayed on their own. Showing one will jump to the post inside its topic
+  def show
+    post = Post.find(params[:id])
+    redirect_to topic_path(post.topic, :page => post.page, :anchor => post.anchor)
+  end
+
   def index
     @topic = Topic.find(params[:topic_id])
     redirect_to @topic
@@ -17,7 +23,8 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Post Created"
-      redirect_to topic_path(@topic, :page => @topic.last_page, :anchor => "post-#{@post.id}") 
+      debugger
+      redirect_to topic_path(@topic, :page => @post.page, :anchor => @post.anchor) 
     else
       render 'new'
     end
@@ -26,7 +33,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:user_id, :content)
+      params.require(:post).permit(:content)
     end
 
 end

@@ -9,8 +9,10 @@ Return to <%= link_to @board.title, @board %>
 
 	<%= f.label :title %>
 	<%= f.text_field :title %>
+	
+	<%= f.fields_for :posts do |p| %>
+		<%= p.hidden_field :user_id, :value => current_user.id %>
 
-	<%= f.fields_for @post do |p| %>
 		<%= p.label :content %>
 		<%= p.text_area :content %>
 	<% end %>

@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 	def show
 		@topic = Topic.find(params[:id])
 		if params[:page].to_i > @topic.last_page
-			flash[:error] = "There is no page with the given index. Automatically redirecting to the first page..."
+			flash[:error] = "There is no page with that index"
 			redirect_to @topic
 		end
 		@board = @topic.board
@@ -32,6 +32,6 @@ class TopicsController < ApplicationController
 	private
 
 	def topic_params
-		params.require(:topic).permit(:title, posts_attributes: [:id, :content])
+		params.require(:topic).permit(:title, posts_attributes: [:content, :user_id])
 	end
 end

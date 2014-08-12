@@ -1,15 +1,15 @@
 class Topic < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :board
-	has_many :posts
+	has_many :posts, :inverse_of => :topic
 
 	accepts_nested_attributes_for :posts
 
 	self.per_page = 15
 
 	validates :title, presence: true, length: { maximum: 255 }
-	validates :user_id, presence: true
-	validates :board_id, presence: true
+	validates :user, presence: true
+	validates :board, presence: true
 
 	# Returns the last page index of the topic
 	def last_page

@@ -7,6 +7,7 @@ namespace :db do
      password_confirmation: "foobar",
      admin: true)
 
+    # Create Users
     99.times do |n|
       name  = "#{Faker::Name.first_name} #{rand(0..100)}"
       email = "example-#{n+1}@railstutorial.org"
@@ -17,6 +18,7 @@ namespace :db do
        password_confirmation: password)
     end
 
+    # Create Boards
     25.times do |n|
       title = "#{Faker::Lorem.word.upcase}"
       description = "#{Faker::Lorem.words.join(" ")}"
@@ -24,13 +26,17 @@ namespace :db do
         description: description)
     end
 
+    # Create Topics
     300.times do |n|
       title = "#{Faker::Lorem.words.join(" ")}"
       user_id = rand(1..100)
       board_id = rand(1..25)
-      Topic.create!(title: title,
+      @topic = Topic.create!(title: title,
         user_id: user_id,
         board_id:board_id)
+      @topic.posts.build(user_id: user_id,
+                         content: "#{Faker::Lorem.paragraph(2)}")
+      @topic.save
     end
 
     # Busy topic

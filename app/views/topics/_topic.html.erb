@@ -3,10 +3,10 @@
 	<th><%= link_to topic.title, topic_path(topic) %></th>
 	<th><%= link_to topic.user.username, topic.user %></th>
 	<th><%= topic.posts.count %></th>
-	<% if topic.posts.any? %>
-	<th><%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago by #{topic.posts.last.user.username}", post_path(topic.posts.last) %></th>
-	<% else %>
-		<th></th>
-	<% end %>
+	<th>
+		<%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", post_path(topic.posts.last) %> by
+		<!-- <%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", topic.posts.last.permalink %> by -->
+		<%= link_to "#{topic.posts.last.user.username}", user_path(topic.posts.last.user) %>
+	</th>
 	<th><%= time_ago_in_words(topic.created_at) %> ago</th>
 </tr>

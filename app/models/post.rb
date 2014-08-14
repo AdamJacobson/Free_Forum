@@ -20,5 +20,6 @@ class Post < ActiveRecord::Base
 	end
 
 	def permalink
+		"/topics/#{self.topic.id}?page=#{self.page}##{self.anchor}"
 	end
 end

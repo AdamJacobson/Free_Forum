@@ -9,7 +9,7 @@ namespace :db do
 
     # Create Users
     99.times do |n|
-      name  = "#{Faker::Name.first_name} #{rand(0..100)}"
+      name  = "#{Faker::Name.first_name}#{rand(0..100)}"
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
       User.create!(username: name,
@@ -35,13 +35,13 @@ namespace :db do
         user_id: user_id,
         board_id:board_id)
       @topic.posts.build(user_id: user_id,
-                         content: "#{Faker::Lorem.paragraph(2)}")
+                         content: "#{Faker::Lorem.paragraph(rand(1..10))}")
       @topic.save
     end
 
     # Busy topic
     50.times do |n|
-      content = "#{Faker::Lorem.paragraph(2)}"
+      content = "#{Faker::Lorem.paragraph(rand(1..10))}"
       topic_id = 1
       user_id = rand(1..100)
       Post.create!(content: content,
@@ -50,7 +50,7 @@ namespace :db do
     end
 
     1000.times do |n|
-      content = "#{Faker::Lorem.paragraph(2)}"
+      content = "#{Faker::Lorem.paragraph(rand(1..10))}"
       topic_id = rand(2..300)
       user_id = rand(1..100)
       Post.create!(content: content,

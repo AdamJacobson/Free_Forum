@@ -10,9 +10,9 @@ FreeForum::Application.routes.draw do
  	match '/signin',  to: 'sessions#new',         via: 'get'
 	match '/signout', to: 'sessions#destroy',     via: 'delete'
   
-  resources :boards do
-    resources :topics, shallow: true do
-      resources :posts, shallow: true
+  resources :boards, shallow: true do
+    resources :topics do
+      resources :posts
     end
   end
 end

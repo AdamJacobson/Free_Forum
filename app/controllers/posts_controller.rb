@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def show
     post = Post.find(params[:id])
     redirect_to topic_path(post.topic, :page => post.page, :anchor => post.anchor)
+    # redirect_to post.permalink
   end
 
   def index
@@ -22,9 +23,8 @@ class PostsController < ApplicationController
     @post = @topic.posts.build(post_params.merge({user_id: current_user.id}))
 
     if @post.save
-      flash[:success] = "Post Created"
-      debugger
       redirect_to topic_path(@topic, :page => @post.page, :anchor => @post.anchor) 
+      # redirect_to @post.permalink
     else
       render 'new'
     end

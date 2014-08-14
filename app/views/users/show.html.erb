@@ -1,5 +1,5 @@
 <% provide(:title, "Profile for #{@user.username}") %>
 <h2>User Profile: <%= @user.username %></h2>
 <b>Email: </b><%= @user.email %><br/>
-<b>Posts: </b><br/>
+<b>Posts: </b><%= @user.posts.count %><br/>
 <b>Reputation: </b><br/>

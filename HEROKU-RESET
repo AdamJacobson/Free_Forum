@@ -1,0 +1,11 @@
+echo "== Reseting... =="
+heroku pg:reset DATABASE --confirm rails-free-forum
+
+echo "== Migrating... =="
+heroku run rake db:migrate
+
+echo "== Populating... ==
+heroku run rake db:populate
+
+echo "== Restarting... ==
+heroku restart

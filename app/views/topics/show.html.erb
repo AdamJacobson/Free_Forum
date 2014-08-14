@@ -1,18 +1,22 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
-<h1><%= @topic.title %></h1>
+<h1><%= link_to "Forums", boards_path %> > <%= link_to "#{@topic.board.title}", @topic.board %> > <%= @topic.title %></h1>
 
-Back to <%= link_to "#{@topic.board.title}", @topic.board %>
-
+<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
+<br/>
 <%= will_paginate @posts %>
+<br/><br/>
 
-<table class="posts">
-	<tr>
-		<th>Author</th>
-		<th>Message</th>
-	</tr>
-<%= render @posts %>
-</table>
+<div class="posts">
+	<table class="posts">
+		<tr>
+			<th class="header-author">Author</th>
+			<th class="header-message">Message</th>
+		</tr>
+		<%= render @posts %>
+	</table>
+</div>
 
+<br/>
 <%= will_paginate @posts %>
-
-<%= link_to "Create new post", new_topic_post_path(@topic) %>
+<br/><br/>
+<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>

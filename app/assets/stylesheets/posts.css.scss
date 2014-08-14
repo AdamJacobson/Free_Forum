@@ -1,3 +1,52 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.posts {
+	border-collapse: collapse;
+	border-style: none;
+	background-color: #e6e6e6;
+
+}
+
+table.posts td {
+	vertical-align: top;
+}
+
+table.post-info-table td {
+	border-style: none;
+}
+
+table.post-content-table td {
+	border-style: none;
+}
+
+table.post-content-table {
+	border-spacing: 0px;	
+}
+
+tr.post-content-head-foot {
+	font-size: smaller;
+}
+
+tr.post-break {
+	height: 10px;
+}
+
+td.post-break {
+	border-style: none;
+	background-color: white;
+}
+
+th.header-author {
+	width: 10%;
+}
+
+th.header-message {
+	width: 90%;
+}
+
+tr.post-info-id {
+	font-size: smaller;
+}
+

@@ -1,3 +1,30 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.users table, tr, td, th {
+
+	border: 2px solid black;
+	border-collapse: collapse;
+
+	&.posts {
+		width: 100%;
+	}
+
+	&.post {
+		color: blue;
+	}
+
+	&.avatar {
+		width: 150px;
+		padding: 5px;
+		border: 2px solid black;
+	}
+
+	&.content {
+		margin: 5px;
+		white-space: word-wrap;
+		color: red;
+	}
+
+}

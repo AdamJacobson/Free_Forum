@@ -3,15 +3,15 @@
 	<td>
 		<table class="post-info-table">
 			<tr class="post-info-username"><td><%= link_to "#{post.user.username}", post.user %></td></tr>
-			<tr class="post-info-avater"><td>User posts: <%= post.user.posts.count %></td></tr>
-			<tr class="post-info-avater"><td>User rank: </td></tr>
+			<tr class="post-info-avatar"><td>User posts: <%= post.user.posts.count %></td></tr>
+			<tr class="post-info-avatar"><td>User rank: </td></tr>
 			<tr class="post-info-id"><td>Post id: <%= post.id %></td></tr>
 		</table>
 	</td>
 
 	<td>
-		<table class="post-content-table" style="border-style: none;">
-			<tr class="post-content-head-foot"><td>Posted: <%= post.created_at.strftime("%B %d, %Y")%> | Last edited: <%= post.updated_at%></td></tr>
+		<table class="post-content-table" >
+			<tr class="post-content-head-foot"><td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%></td></tr>
 			<tr><td>&nbsp;</td></tr>
 			<tr class="post-content"><td><%= post.content %></td></tr>
 			<tr><td>&nbsp;</td></tr>

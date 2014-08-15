@@ -28,7 +28,7 @@ namespace :db do
 
     # Create Topics
     300.times do |n|
-      title = "#{Faker::Lorem.words.join(" ")}"
+      title = "#{Faker::Lorem.words.join(" ").capitalize!}"
       user_id = rand(1..100)
       board_id = rand(1..25)
       @topic = Topic.create!(title: title,

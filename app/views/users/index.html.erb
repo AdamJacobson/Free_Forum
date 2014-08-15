@@ -2,30 +2,19 @@
 <h1>All users</h1>
 
 <%= will_paginate %>
+<br/><br/>
 
 <table class="users">
 	<tr>
 		<th>Username</th>
 		<th>Posts</th>
-		<th>Reputation</th>
-		<th>Rank</th>
+		<% if current_user.admin? %>
+		<th>Actions</th>
+		<% end %>
 	</tr>
 
-	<% @users.each do |user| %>
-	<tr>
-		<td>
-			<%= link_to user.username, user %>
-		</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>
-		<% if current_user.admin? && !current_user?(user) %>
-    <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-		</td>
-  <% end %>
-	</tr>
-	<% end %>
+	<%= render @users %>
 </table>
 
+<br/>
 <%= will_paginate %>

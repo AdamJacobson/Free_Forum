@@ -2,40 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table.posts {
+.posts {
 	border-collapse: collapse;
+	td {
+		vertical-align: top;
+	}
+}
+
+.post-info-table {
 	border-style: none;
-	background-color: #e6e6e6;
-
+	td {
+		border-style: none;
+	}
 }
 
-table.posts td {
-	vertical-align: top;
-}
-
-table.post-info-table td {
+.post-content-table {
 	border-style: none;
-}
-
-table.post-content-table td {
-	border-style: none;
-}
-
-table.post-content-table {
-	border-spacing: 0px;	
+	td {
+		border-style: none;
+	}
 }
 
 tr.post-content-head-foot {
 	font-size: smaller;
-}
-
-tr.post-break {
-	height: 10px;
-}
-
-td.post-break {
-	border-style: none;
-	background-color: white;
 }
 
 th.header-author {
@@ -46,7 +35,9 @@ th.header-message {
 	width: 90%;
 }
 
-tr.post-info-id {
-	font-size: smaller;
+.post-info-id {
+	td {
+		font-size: smaller;
+	}
 }
 

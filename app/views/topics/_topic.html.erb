@@ -4,8 +4,7 @@
 	<th><%= link_to topic.user.username, topic.user %></th>
 	<th><%= topic.posts.count %></th>
 	<th>
-		<%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", post_path(topic.posts.last) %> by
-		<!-- <%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", topic.posts.last.permalink %> by -->
+		<%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", topic.posts.last.permalink %><br/>
 		<%= link_to "#{topic.posts.last.user.username}", user_path(topic.posts.last.user) %>
 	</th>
 	<th><%= time_ago_in_words(topic.created_at) %> ago</th>

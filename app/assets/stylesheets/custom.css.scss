@@ -52,3 +52,12 @@ footer {
 	display: inline-block;
 }
 
+table, th, td, tr {
+	background-color: #e6e6e6;
+	border: 2px solid black;
+}
+
+div.main-content {
+	margin: auto;
+	width: 90%;
+}

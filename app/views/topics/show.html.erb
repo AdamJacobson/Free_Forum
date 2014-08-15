@@ -1,12 +1,11 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
 <h1><%= link_to "Forums", boards_path %> > <%= link_to "#{@topic.board.title}", @topic.board %> > <%= @topic.title %></h1>
 
-<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
-<br/>
-<%= will_paginate @posts %>
-<br/><br/>
+<div >
 
-<div class="posts">
+	<%= will_paginate @posts %>
+	<br/><br/>
+
 	<table class="posts">
 		<tr>
 			<th class="header-author">Author</th>
@@ -14,9 +13,12 @@
 		</tr>
 		<%= render @posts %>
 	</table>
-</div>
 
-<br/>
-<%= will_paginate @posts %>
-<br/><br/>
-<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
+	<br/>
+	<%= will_paginate @posts %>
+
+	<% if signed_in? %>
+	<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
+	<% end %>
+
+</div>

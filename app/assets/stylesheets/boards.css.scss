@@ -2,3 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.boards {
+	border-collapse: collapse;
+	td {
+		vertical-align: middle;
+		text-align: center;
+	}
+	th {
+		padding: 5px;
+	}
+}
+
+.board-title-table {
+	border-style: none;
+	td {
+		border-style: none;
+		vertical-align: top;
+		text-align: left;
+	}
+}
+
+.board-lastpost-table {
+	border-style: none;
+	td {
+		border-style: none;
+		text-align: left;
+	}
+}
+
+.board-title-moderators {
+	font-size: smaller;
+}

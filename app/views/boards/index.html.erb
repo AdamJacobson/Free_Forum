@@ -1,18 +1,19 @@
 <% provide(:title, 'All Boards') %>
-<%= will_paginate %>
 
 <h1>All Boards</h1>
+
+<%= will_paginate %>
+<br/><br/>
+
 <table class="boards">
 	<tr>
 		<th>Title</th>
 		<th>Topics</th>
+		<th>Posts</th>
+		<th>Last Post</th>
 	</tr>
-<% @boards.each do |board| %>
-	<tr>
-		<th><%= link_to board.title, board %></th>
-		<th><%= board.topics.count %></th>
-	</tr>
-<% end %>
+<%= render @boards %>
 </table>
 
+<br/>
 <%= will_paginate %>

@@ -1,11 +1,11 @@
 
 <tr>
-	<th><%= link_to topic.title, topic_path(topic) %></th>
-	<th><%= link_to topic.user.username, topic.user %></th>
-	<th><%= topic.posts.count %></th>
-	<th>
+	<td class="topic-title"><%= link_to topic.title, topic_path(topic) %></td>
+	<td class="topic-author"><%= link_to topic.user.username, topic.user %></td>
+	<td class="topic-post-count"><%= topic.posts.count %></td>
+	<td>
 		<%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", topic.posts.last.permalink %><br/>
 		<%= link_to "#{topic.posts.last.user.username}", user_path(topic.posts.last.user) %>
-	</th>
-	<th><%= time_ago_in_words(topic.created_at) %> ago</th>
+	</td>
+	<td><%= time_ago_in_words(topic.created_at) %> ago</td>
 </tr>

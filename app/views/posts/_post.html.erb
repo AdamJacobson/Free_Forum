@@ -10,12 +10,21 @@
 	</td>
 
 	<td>
-		<table class="post-content-table" >
-			<tr class="post-content-head-foot"><td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%></td></tr>
+		<table class="post-content-table">
+			<tr class="post-content-head-foot">
+				<td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%></td>
+			</tr>
 			<tr><td>&nbsp;</td></tr>
 			<tr class="post-content"><td><%= post.content %></td></tr>
 			<tr><td>&nbsp;</td></tr>
-			<tr class="post-content-head-foot"><td><%= link_to "Permalink", post.permalink %></td></tr>
+			<tr class="post-content-head-foot">
+				<td>
+					<%= link_to "Permalink", post.permalink %>
+					<% if current_user?(post.user) %>
+					<%= link_to "Edit", edit_post_path(post) %>
+					<% end %>
+				</td>
+			</tr>
 		</table>
 	</td>
 </tr>

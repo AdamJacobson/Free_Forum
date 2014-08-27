@@ -1,6 +1,5 @@
-<h1>Create new topic</h1>
 
-Return to <%= link_to @board.title, @board %>
+<h1><%= link_to "Forums", boards_path %> > <%= link_to @board.title, @board %> > New Topic</h1>
 
 <div>
 	<%= form_for [@board, @topic] do |f| %>
@@ -9,13 +8,14 @@ Return to <%= link_to @board.title, @board %>
 
 	<%= f.label :title %>
 	<%= f.text_field :title %>
+	<br/>
 	
 	<%= f.fields_for :posts do |p| %>
 		<%= p.hidden_field :user_id, :value => current_user.id %>
 
-		<%= p.label :content %>
 		<%= p.text_area :content %>
 	<% end %>
+	<br/><br/>
 
 	<%= f.submit "Post new topic", class: "button submit" %>
 	<% end %>

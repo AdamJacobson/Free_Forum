@@ -1,0 +1,17 @@
+<tr>
+	<td>
+		<table class="board-title-table">
+			<tr class="board-title-title"><td><%= link_to board.title, board %></td></tr>
+			<tr class="board-title-description"><td><%= board.description %></td></tr>
+			<tr class="board-title-moderators"><td>Moderators: <%= link_to "Admin", User.find(1) %></td></tr>
+		</table>
+	</td>
+	<td><%= board.topics.count %></td>
+	<td><%= board.topics.collect{|a| a.posts.count}.sum %></td>
+	<td>
+		<table class="board-lastpost-table">
+			<tr><td><%= link_to "#{board.posts.last.topic.title}", board.posts.last %></td></tr>
+			<tr><td><%= link_to "#{board.posts.last.user.username}", board.posts.last.user %></td></tr>
+		</table>
+	</td>
+</tr>

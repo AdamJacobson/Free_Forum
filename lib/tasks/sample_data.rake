@@ -23,7 +23,7 @@ namespace :db do
       title = "#{Faker::Lorem.word.upcase}"
       description = "#{Faker::Lorem.words.join(" ")}"
       Board.create!(title: title,
-        description: description)
+       description: description)
     end
 
     # Create Topics
@@ -32,14 +32,14 @@ namespace :db do
       user_id = rand(1..100)
       board_id = rand(1..25)
       @topic = Topic.create!(title: title,
-        user_id: user_id,
-        board_id:board_id)
+       user_id: user_id,
+       board_id:board_id)
       @topic.posts.build(user_id: user_id,
-                         content: "#{Faker::Lorem.paragraph(rand(1..10))}")
+       content: "#{Faker::Lorem.paragraph(rand(1..10))}")
       @topic.save
     end
 
-    # Busy topic
+    # Posts for a busy topic
     50.times do |n|
       content = "#{Faker::Lorem.paragraph(rand(1..10))}"
       topic_id = 1
@@ -49,6 +49,7 @@ namespace :db do
        user_id: user_id)
     end
 
+    # Posts
     1000.times do |n|
       content = "#{Faker::Lorem.paragraph(rand(1..10))}"
       topic_id = rand(2..300)
@@ -57,6 +58,5 @@ namespace :db do
        topic_id: topic_id,
        user_id: user_id)
     end
-
   end
 end

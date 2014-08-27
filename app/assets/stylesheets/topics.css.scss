@@ -3,13 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
-		border-collapse: collapse;
-	td, th {
+	border-collapse: collapse;
+	td {
 		vertical-align: middle;
+		padding: 5px;
+	}
+	th {
 		padding: 5px;
 	}
 }
 
 .description {
 	
+}
+
+.topic-title {
+	text-align: left;	
+}
+
+.topic-author {
+	text-align: center;
+}
+
+.topic-post-count {
+	text-align: center;
 }

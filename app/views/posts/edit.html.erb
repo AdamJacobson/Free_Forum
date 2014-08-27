@@ -1,2 +1,14 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>Edit post</h1>
+
+Return to <%= link_to @post.topic.title, @post.topic %>
+
+<div>
+	<%= form_for @post do |f| %>
+
+	<%= render 'shared/error_messages', object: @post %>
+
+	<%= f.text_area :content %>
+
+	<%= f.submit "Save changes", class: "button submit" %>
+	<% end %>
+</div>

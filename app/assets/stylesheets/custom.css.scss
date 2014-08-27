@@ -61,3 +61,10 @@ div.main-content {
 	margin: auto;
 	width: 90%;
 }
+
+textarea {
+	width: 50%;
+	min-width: 500px;
+	height: 200px;
+	resize: none;
+}

@@ -1,5 +1,47 @@
 <% provide(:title, "Profile for #{@user.username}") %>
-<h2>User Profile: <%= @user.username %></h2>
+<h2><%= link_to "Users", users_path %> > <%= @user.username %></h2>
 <b>Email: </b><%= @user.email %><br/>
+
+<br/>
+
+<% if @user.topics.any? %>
+<b>Topics: </b><%= @user.topics.count %><br/>
+<%= link_to "See all topics for #{@user.username}", user_topics_path %>
+<br/><br/>
+<div>
+	<table class="topics">
+		<tr>
+			<th class="header topic-title">Title</th>
+			<th class="header topic-author">Author</th>
+			<th class="header topic-posts">Posts</th>
+			<th class="header topic-last-post">Last Post</th>
+			<th class="header topic-created">Created</th>
+		</tr>
+		<%= render @topics %>
+	</table>
+</div>
+<% else %>
+This user has no topics
+<br/>
+<% end %>
+
+<br/>
+
+<% if @user.posts.any? %>
+
 <b>Posts: </b><%= @user.posts.count %><br/>
-<b>Reputation: </b><br/>
+<%= link_to "See all posts for #{@user.username}", user_posts_path %>
+<br/><br/>
+<div >
+	<table class="posts">
+		<tr>
+			<th class="header-author">Author</th>
+			<th class="header-message">Message</th>
+		</tr>
+		<%= render @posts %>
+	</table>
+	<br/>
+</div>
+<% else %>
+This user has no posts
+<% end %>

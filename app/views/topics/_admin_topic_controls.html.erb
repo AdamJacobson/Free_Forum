@@ -1,0 +1,28 @@
+<div class="admin">
+	<b>Admin Topic Controls</b>
+	<br/><br/>
+
+	<%= form_for @topic do |f| %>
+
+	<%= render 'shared/error_messages', object: @topic %>
+
+	Title: <%= f.text_field :title %>
+
+	<br/>
+
+	Board: <%= collection_select :topic, :board_id, Board.all, :id, :title %>
+
+	<br/>
+
+	Sticky: <%= f.check_box :sticky %>
+
+	<br/>
+
+	Locked: <%= f.check_box :locked %>
+
+	<br/><br/>
+
+	<%= f.submit "Save Changes", class: "button submit", :confirm => 'Are you sure?' %>
+	<% end %>
+
+</div>

@@ -1,8 +1,13 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
 <h1><%= link_to "Forums", boards_path %> > <%= link_to "#{@topic.board.title}", @topic.board %> > <%= @topic.title %></h1>
 
-<div >
+<% if current_user_is_admin? %>
+	<br/>
+	<%= render 'admin_topic_controls' %>
+	<br/>
+<% end %>
 
+<div >
 	<%= will_paginate @posts %>
 	<br/><br/>
 
@@ -18,7 +23,9 @@
 	<%= will_paginate @posts %>
 
 	<% if signed_in? %>
+	<br/><br/>
 	<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
 	<% end %>
 
 </div>
+

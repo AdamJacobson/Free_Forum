@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 	
 	def show
 		@board = Board.find(params[:id])
-		@topics = @board.topics.order("last_replied_to_at DESC").paginate(page: params[:page])
+		@topics = @board.topics.order("sticky DESC, last_replied_to_at DESC").paginate(page: params[:page])
 	end
 
 	def index

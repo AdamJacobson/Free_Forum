@@ -29,6 +29,11 @@ module SessionsHelper
   	@current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  # Should be used in place of current_user.admin? as this will check for nil user as well
+  def current_user_is_admin?
+    !current_user.nil? && current_user.admin?
+  end
+
   def current_user?(user)
     user == current_user
   end

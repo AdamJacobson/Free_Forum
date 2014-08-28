@@ -1,0 +1,21 @@
+<h2><%= link_to "Users", users_path %> > <%= link_to @user.username, @user %> > User posts</h2>
+
+<% if @user.posts.any? %>
+<div >
+	<%= will_paginate @posts %>
+	<br/><br/>
+
+	<table class="posts">
+		<tr>
+			<th class="header-author">Author</th>
+			<th class="header-message">Message</th>
+		</tr>
+		<%= render @posts %>
+	</table>
+	<br/>
+	<%= will_paginate @posts %>
+	<br/>
+</div>
+<% else %>
+This user has no posts
+<% end %>

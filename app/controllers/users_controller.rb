@@ -24,6 +24,18 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @posts = @user.posts.order("created_at DESC").last(5)
+    @topics = @user.topics.order("created_at DESC").last(5)
+  end
+
+  def user_posts
+    @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
+  end
+
+  def user_topics
+    @user = User.find(params[:id])
+    @topics = @user.topics.order("created_at DESC").paginate(page: params[:page])
   end
 
   def edit
@@ -32,7 +44,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user.email = params[:user][:email]
+    if @user.save
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -40,11 +53,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
-    redirect_to users_url
-  end
+  # def destroy
+  #   User.find(params[:id]).destroy
+  #   flash[:success] = "User deleted."
+  #   redirect_to users_url
+  # end
 
   private
 

@@ -3,8 +3,8 @@ namespace :db do
   task populate: :environment do
     User.create!(username: "Example User",
      email: "example@railstutorial.org",
-     password: "foobar",
-     password_confirmation: "foobar",
+     password: "password",
+     password_confirmation: "password",
      admin: true)
 
     # Create Users
@@ -33,7 +33,8 @@ namespace :db do
       board_id = rand(1..25)
       @topic = Topic.create!(title: title,
        user_id: user_id,
-       board_id:board_id)
+       board_id: board_id,
+       sticky: (rand(10) == 0))
       @topic.posts.build(user_id: user_id,
        content: "#{Faker::Lorem.paragraph(rand(1..10))}")
       @topic.save

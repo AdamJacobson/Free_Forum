@@ -12,7 +12,7 @@
 	<td>
 		<table class="post-content-table">
 			<tr class="post-content-head-foot">
-				<td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%></td>
+				<td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%> in reply to <%= link_to "#{post.topic.title}", post.topic  %></td>
 			</tr>
 			<tr><td>&nbsp;</td></tr>
 			<tr class="post-content"><td><%= post.content %></td></tr>

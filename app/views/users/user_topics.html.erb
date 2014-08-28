@@ -1,12 +1,8 @@
-<% provide(:title, @board.title) %>
-<h1><%= link_to "Forums", boards_path %> > <%= @board.title %></h1>
-<h2 class="description"><%= @board.description %></h2>
+<h2><%= link_to "Users", users_path %> > <%= link_to @user.username, @user %> > User topics</h2>
 
+<% if @user.topics.any? %>
 <div>
-
 	<%= will_paginate @topics %>
-	<br/><br/>
-
 	<table class="topics">
 		<tr>
 			<th class="header topic-title">Title</th>
@@ -17,12 +13,9 @@
 		</tr>
 		<%= render @topics %>
 	</table>
-
-	<br/>
 	<%= will_paginate @topics %>
-
 </div>
-
-<% if signed_in? %>
-<%= button_to "Create new topic", new_board_topic_path(@board), :method => :get %>
+<% else %>
+This user has no topics
+<br/>
 <% end %>

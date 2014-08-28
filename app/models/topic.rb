@@ -20,4 +20,9 @@ class Topic < ActiveRecord::Base
 			(posts_num / Post.per_page.to_f).ceil
 		end
 	end
+
+	# Returns if the topic is sticky or not
+	def sticky?
+		sticky
+	end
 end

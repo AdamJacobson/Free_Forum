@@ -15,7 +15,14 @@
 
 		<%= p.text_area :content %>
 	<% end %>
-	<br/><br/>
+	<br/>
+
+	<% if current_user_is_admin? %>
+		Sticky: <%= f.check_box :sticky %>
+		<br/>
+		Locked: <%= f.check_box :locked %>
+		<br/>
+	<% end %>
 
 	<%= f.submit "Post new topic", class: "button submit" %>
 	<% end %>

@@ -1,16 +1,12 @@
 class PostsController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :can_post,       only: [:create, :new, :update, :edit]
 
   # Post are not displayed on their own. Showing one will jump to the post inside its topic
   def show
     post = Post.find(params[:id])
     redirect_to post.permalink
-  end
-
-  def index
-    @topic = Topic.find(params[:topic_id])
-    redirect_to @topic
   end
 
   def edit
@@ -54,6 +50,19 @@ class PostsController < ApplicationController
     def correct_user
       @user = Post.find(params[:id]).user
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    # Only admins can post in locked topics
+    def can_post
+      if (params[:topic_id]).nil?
+        topic = Post.find(params[:id]).topic
+      else
+        topic = Topic.find(params[:topic_id])
+      end
+      if topic.locked? && !current_user_is_admin?
+        flash[:alert] = "That topic is currently locked." 
+        redirect_to(topic)
+      end
     end
 
 end

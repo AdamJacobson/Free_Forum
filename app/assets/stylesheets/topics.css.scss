@@ -8,23 +8,47 @@
 		vertical-align: middle;
 		padding: 5px;
 	}
-	th {
-		padding: 5px;
+}
+
+.header {
+
+	&.topic-author {
+		width: 12%;
+	}
+
+	&.topic-posts {
+		width: 3%;
+	}
+
+	&.topic-last-post {
+		width: 15%;
+	}
+
+	&.topic-created {
+		width: 15%;
 	}
 }
 
-.description {
-	
-}
-
-.topic-title {
-	text-align: left;	
-}
-
-.topic-author {
+.column {
 	text-align: center;
-}
 
-.topic-post-count {
-	text-align: center;
+	&.topic-title {
+		text-align: left;	
+	}
+
+	&.topic-author {
+		text-align: center;
+	}
+
+	&.topic-posts {
+		text-align: center;
+	}
+
+	&.topic-last-post {
+		text-align: center;
+	}
+
+	&.topic-created {
+		text-align: center;
+	}
 }

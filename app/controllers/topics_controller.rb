@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-	before_action :signed_in_user, only: [:create, :new]
+	before_action :signed_in_user, only:       [:create, :new, :update]
 
 	def show
 		@topic = Topic.find(params[:id])
@@ -29,9 +29,20 @@ class TopicsController < ApplicationController
 		end
 	end
 
+	def update
+		@topic = Topic.find(params[:id])
+		if @topic.update_attributes(topic_params)
+			flash[:success] = "Topic updated"
+      redirect_to @topic
+    else
+      flash[:error] = "Topic failed to update"
+      redirect_to @topic
+		end
+	end
+
 	private
 
 	def topic_params
-		params.require(:topic).permit(:title, posts_attributes: [:content, :user_id])
+		params.require(:topic).permit(:title, :sticky, :locked, :board_id, posts_attributes: [:content, :user_id])
 	end
 end

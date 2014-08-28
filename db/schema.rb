@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815204742) do
+ActiveRecord::Schema.define(version: 20140827222707) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140815204742) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_replied_to_at"
+    t.boolean  "sticky"
+    t.boolean  "locked",             default: false
   end
 
   create_table "users", force: true do |t|

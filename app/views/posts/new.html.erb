@@ -1,5 +1,4 @@
-<h1>Create new post</h1>
-Return to <%= link_to "#{@topic.title}", @topic %>
+<h1><%= link_to "Forums", boards_path %> > <%= link_to "#{@topic.board.title}", @topic.board %> > <%= link_to "#{@topic.title}", @topic %> > New Post</h1>
 
 <div>
 	<%= form_for [@topic, @post] do |f| %>
@@ -8,8 +7,11 @@ Return to <%= link_to "#{@topic.title}", @topic %>
 
 	<%= f.hidden_field :action, :value => :create %>
 
-	<%= f.label :content %>
+	<br/>
+
 	<%= f.text_area :content %>
+
+	<br/>
 
 	<%= f.submit "Post!", class: "button submit" %>
 	<% end %>

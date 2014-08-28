@@ -5,6 +5,8 @@ FreeForum::Application.routes.draw do
 
   resources :users
 	match '/signup',  to: 'users#new',            via: 'get'
+  match '/users/:id/posts', to: 'users#user_posts', via: 'get', as: 'user_posts'
+  match '/users/:id/topics', to: 'users#user_topics', via: 'get', as: 'user_topics'
   
   resources :sessions, only: [:new, :create, :destroy]
  	match '/signin',  to: 'sessions#new',         via: 'get'

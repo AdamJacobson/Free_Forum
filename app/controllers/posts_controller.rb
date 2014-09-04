@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :can_post,       only: [:create, :new, :update, :edit]
 
+  add_breadcrumb "Forums", :boards_path
+
   # Post are not displayed on their own. Showing one will jump to the post inside its topic
   def show
     post = Post.find(params[:id])
@@ -11,6 +13,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+
+    add_breadcrumb "#{@post.topic.board.title}", @post.topic.board
+    add_breadcrumb "#{@post.topic.title.truncate(40, separator: ' ')}", @post.topic
+    add_breadcrumb "Edit Post"
   end
 
   def update
@@ -26,6 +32,10 @@ class PostsController < ApplicationController
   def new
   	@topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build
+
+    add_breadcrumb "#{@post.topic.board.title}", @post.topic.board
+    add_breadcrumb "#{@post.topic.title.truncate(40, separator: ' ')}", @post.topic
+    add_breadcrumb "New Post"
   end
 
   def create

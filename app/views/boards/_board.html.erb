@@ -10,7 +10,7 @@
 	<td><%= board.topics.collect{|a| a.posts.count}.sum %></td>
 	<td>
 		<table class="board-lastpost-table">
-			<tr><td><%= link_to "#{board.posts.last.topic.title}", board.posts.last %></td></tr>
+			<tr><td><%= link_to "#{board.posts.last.topic.title.truncate(50, separator: ' ')}", board.posts.last %></td></tr>
 			<tr><td><%= link_to "#{board.posts.last.user.username}", board.posts.last.user %></td></tr>
 		</table>
 	</td>

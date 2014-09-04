@@ -1,5 +1,4 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
-<h1><%= link_to "Forums", boards_path %> > <%= link_to "#{@topic.board.title}", @topic.board %> > <%= @topic.title %></h1>
 
 <% if current_user_is_admin? %>
 	<br/>

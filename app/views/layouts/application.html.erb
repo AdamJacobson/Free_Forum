@@ -12,11 +12,15 @@
 	<%= render 'layouts/header' %>
 	<hr/>
 
-	<% flash.each do |key, value| %>
-	<div class="alert alert-<%= key %>"><%= value %></div>
-	<% end %>
+	<div>
+		<% flash.each do |key, value| %>
+		<div class="alert alert-<%= key %>"><%= value %></div>
+		<% end %>
+	</div>
 
 	<div class="main-content">
+		<h1><%= render_breadcrumbs %></h1>
+
 		<%= yield %>
 	</div>
 

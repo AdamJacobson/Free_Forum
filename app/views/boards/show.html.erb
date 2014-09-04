@@ -1,9 +1,7 @@
 <% provide(:title, @board.title) %>
-<h1><%= link_to "Forums", boards_path %> > <%= @board.title %></h1>
 <h2 class="description"><%= @board.description %></h2>
 
 <div>
-
 	<%= will_paginate @topics %>
 	<br/><br/>
 

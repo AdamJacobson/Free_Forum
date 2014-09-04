@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy]
 
+  add_breadcrumb "Users", :users_path
+
   def new
     @user = User.new
+
+    add_breadcrumb "Signup"
   end
 
   def create
@@ -26,20 +30,31 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @posts = @user.posts.order("created_at DESC").last(5)
     @topics = @user.topics.order("created_at DESC").last(5)
+
+    add_breadcrumb "#{@user.username}", user_path(@user)
   end
 
   def user_posts
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
+
+    add_breadcrumb "#{@user.username}", user_path(@user)
+    add_breadcrumb "User Posts", user_posts_path(@user)
   end
 
   def user_topics
     @user = User.find(params[:id])
     @topics = @user.topics.order("created_at DESC").paginate(page: params[:page])
+
+    add_breadcrumb "#{@user.username}", user_path(@user)
+    add_breadcrumb "User Topics", user_topics_path(@user)
   end
 
   def edit
     @user = User.find(params[:id])
+
+    add_breadcrumb "#{@user.username}", user_path(@user)
+    add_breadcrumb "Settings", edit_user_path(@user)
   end
 
   def update

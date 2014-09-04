@@ -1,7 +1,9 @@
 <% provide(:title, 'All Boards') %>
 
-<%= will_paginate %>
+<% if current_user_is_admin? %>
+<%= button_to "Create New Board", new_board_path, :method => :get %>
 <br/><br/>
+<% end %>
 
 <table class="boards">
 	<tr>
@@ -13,5 +15,7 @@
 <%= render @boards %>
 </table>
 
-<br/>
-<%= will_paginate %>
+<% if current_user_is_admin? %>
+<br/><br/>
+<%= button_to "Create New Board", new_board_path, :method => :get %>
+<% end %>

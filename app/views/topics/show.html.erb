@@ -1,12 +1,12 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
 
 <% if current_user_is_admin? %>
-	<br/>
-	<%= render 'admin_topic_controls' %>
-	<br/>
+<br/>
+<%= render 'admin_topic_controls' %>
+<br/>
 <% end %>
 
-<div >
+<div>
 	<%= will_paginate @posts %>
 	<br/><br/>
 
@@ -21,10 +21,9 @@
 	<br/>
 	<%= will_paginate @posts %>
 
-	<% if signed_in? %>
-	<br/><br/>
-	<%= button_to "Create new post", new_topic_post_path(@topic), :method => :get %>
-	<% end %>
-
 </div>
 
+<% if signed_in? %>
+<br/><br/>
+<%= button_to "Reply to this topic", new_topic_post_path(@topic), :method => :get %>
+<% end %>

@@ -1,5 +1,5 @@
 
-<tr>
+<tr class="<%= cycle("odd", "even") -%>">
 	<td class="column topic-title">
 		<% if topic.sticky? %>
 			<%= "Sticky: " %>
@@ -10,7 +10,7 @@
 		<% end %>
 	</td>
 	<td class="column topic-author"><%= link_to topic.user.username, topic.user %></td>
-	<td class="column topic-posts"><%= topic.posts.count %></td>
+	<td class="column topic-posts"><%= topic.posts.count - 1 %></td>
 	<td class="column topic-last-post">
 		<%= link_to "#{time_ago_in_words(topic.posts.last.created_at)} ago", topic.posts.last.permalink %><br/>
 		<%= link_to "#{topic.posts.last.user.username}", user_path(topic.posts.last.user) %>

@@ -1,5 +1,5 @@
 
-<tr id="post-<%= post.id %>">
+<tr id="post-<%= post.id %>" class="<%= cycle("odd", "even", name: "color") -%>">
 	<td>
 		<table class="post-info-table">
 			<tr class="post-info-username"><td><%= link_to "#{post.user.username}", post.user %></td></tr>

@@ -1,6 +1,7 @@
 <% provide(:title, @board.title) %>
 <h2 class="description"><%= @board.description %></h2>
 
+<% if @topics.any? %>
 <div>
 	<%= will_paginate @topics %>
 	<br/><br/>
@@ -9,7 +10,7 @@
 		<tr>
 			<th class="header topic-title">Title</th>
 			<th class="header topic-author">Author</th>
-			<th class="header topic-posts">Posts</th>
+			<th class="header topic-posts">Replies</th>
 			<th class="header topic-last-post">Last Post</th>
 			<th class="header topic-created">Created</th>
 		</tr>
@@ -20,6 +21,9 @@
 	<%= will_paginate @topics %>
 
 </div>
+<% else %>
+No Topics
+<% end %>
 
 <% if signed_in? %>
 <%= button_to "Create new topic", new_board_topic_path(@board), :method => :get %>

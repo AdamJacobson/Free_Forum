@@ -52,8 +52,18 @@ footer {
 	display: inline-block;
 }
 
-table, th, td, tr {
-	background-color: #e6e6e6;
+table, td, tr {
+	border: 2px solid black;
+	&.odd {
+		background-color: #a6a6a6;
+	}
+	&.even {
+		background-color: #d6d6d6;
+	}
+}
+
+th {
+	background-color: #d6d6d6;
 	border: 2px solid black;
 }
 

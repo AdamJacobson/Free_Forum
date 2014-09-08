@@ -12,7 +12,7 @@
 		<table class="board-lastpost-table">
 			<% if board.posts.any? %>
 			<tr><td><%= link_to "#{board.posts.last.topic.title.truncate(50, separator: ' ')}", board.posts.last %></td></tr>
-			<tr><td><%= link_to "#{board.posts.last.user.username}", board.posts.last.user %></td></tr>
+			<tr><td class="center"><%= render 'users/user_link', user: board.posts.last.user %></td></tr>
 			<% else %>
 			<tr><td>No Topics</td></tr>
 			<% end%>

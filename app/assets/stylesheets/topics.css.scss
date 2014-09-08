@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.topics {
+table.topics {
 	border-collapse: collapse;
 	td {
+		border: 2px solid black;
 		vertical-align: middle;
 		padding: 5px;
 	}

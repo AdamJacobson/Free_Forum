@@ -1,3 +1,6 @@
+$even-color: #d6d6d6;
+$odd-color: #a6a6a6;
+
 @mixin header-footer {
 	background-color: lightgrey;
 	border: double;
@@ -52,18 +55,37 @@ footer {
 	display: inline-block;
 }
 
+/* User rank links */
+
+.user_link {
+	text-decoration: none;
+	&:hover {
+    text-decoration: underline;
+	}
+}
+
+.rank-admin {
+	color: #E00;
+
+}
+
+.rank-default {
+	color: black;
+}
+
+
+
 table, td, tr {
-	border: 2px solid black;
 	&.odd {
-		background-color: #a6a6a6;
+		background-color: $odd-color;
 	}
 	&.even {
-		background-color: #d6d6d6;
+		background-color: $even-color;
 	}
 }
 
 th {
-	background-color: #d6d6d6;
+	background-color: $even-color;
 	border: 2px solid black;
 }
 
@@ -83,4 +105,30 @@ textarea {
 	padding: 5px;
 	background-color: orange;
 	border-style: double;
+}
+
+/* Global rules */
+
+.pc10 {
+	width: 10%;
+}
+
+.pc90 {
+	width: 90%;
+}
+
+.center {
+	text-align: center;
+}
+
+.smaller {
+	font-size: smaller;
+}
+
+.border {
+	border: 2px solid black;
+}
+
+.border-right {
+	border-right: 2px solid black;
 }

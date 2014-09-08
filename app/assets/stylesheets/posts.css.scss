@@ -2,42 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.posts {
+table.posts-table {
+	border-collapse: collapse;
+
+	width: 100%;
+}
+
+table.post {
 	border-collapse: collapse;
 	width: 100%;
+
+	border: 2px solid black;
 	td {
 		vertical-align: top;
-	}
-}
-
-.post-info-table {
-	border-style: none;
-	td {
-		border-style: none;
-	}
-}
-
-.post-content-table {
-	border-style: none;
-	td {
-		border-style: none;
-	}
-}
-
-tr.post-content-head-foot {
-	font-size: smaller;
-}
-
-th.header-author {
-	width: 10%;
-}
-
-th.header-message {
-	width: 90%;
-}
-
-.post-info-id {
-	td {
-		font-size: smaller;
+		padding: 5px;
 	}
 }

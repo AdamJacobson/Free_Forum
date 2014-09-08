@@ -10,10 +10,10 @@
 	<%= will_paginate @posts %>
 	<br/><br/>
 
-	<table class="posts">
+	<table class="posts-table">
 		<tr>
-			<th class="header-author">Author</th>
-			<th class="header-message">Message</th>
+			<th class="pc10">Author</th>
+			<th class="pc90">Message</th>
 		</tr>
 		<%= render @posts %>
 	</table>
@@ -24,6 +24,6 @@
 </div>
 
 <% if signed_in? %>
-<br/><br/>
+<br/>
 <%= button_to "Reply to this topic", new_topic_post_path(@topic), :method => :get %>
 <% end %>

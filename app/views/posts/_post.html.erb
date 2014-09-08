@@ -1,30 +1,40 @@
+<table id="post-<%= post.id %>" class="post <%= cycle("odd", "even", name: "color") -%>">
+	<tr>
+		<td class="pc10 center border-right">
+			<%= render 'users/user_link', user: post.user %>
+		</td>
+		<td class="pc90 smaller">
+			<%= post.created_at.strftime("%A, %B %d, %Y at %r")%> in reply to <%= link_to "#{post.topic.title}", post.topic  %>
+		</td>
+	</tr>
 
-<tr id="post-<%= post.id %>" class="<%= cycle("odd", "even", name: "color") -%>">
-	<td>
-		<table class="post-info-table">
-			<tr class="post-info-username"><td><%= link_to "#{post.user.username}", post.user %></td></tr>
-			<tr class="post-info-avatar"><td>User posts: <%= post.user.posts.count %></td></tr>
-			<tr class="post-info-avatar"><td>User rank: </td></tr>
-			<tr class="post-info-id"><td>Post id: <%= post.id %></td></tr>
-		</table>
-	</td>
+	<tr>
+		<td class="pc10 center border-right">
+			<%= image_tag("rails.png", alt: "Rails") %><br/>
+			Posts: <%= post.user.posts.count %><br/>
+			Rank: <%= post.user.rank %></br>
+		</td>
+		<td class="pc90">
+			<%= simple_format(post.content)%>
+		</td>
+	</tr>
 
-	<td>
-		<table class="post-content-table">
-			<tr class="post-content-head-foot">
-				<td><%= post.created_at.strftime("%A, %B %d, %Y at %r")%> in reply to <%= link_to "#{post.topic.title}", post.topic  %></td>
-			</tr>
-			<tr><td>&nbsp;</td></tr>
-			<tr class="post-content"><td><%= simple_format(post.content)%></td></tr>
-			<tr><td>&nbsp;</td></tr>
-			<tr class="post-content-head-foot">
-				<td>
-					<%= link_to "Permalink", post.permalink %>
-					<% if current_user?(post.user) %>
-					<%= link_to "Edit", edit_post_path(post) %>
-					<% end %>
-				</td>
-			</tr>
-		</table>
-	</td>
-</tr>
+	<tr>
+		<td class="pc10 smaller border-right">Post id: <%= post.id %></td>
+		<td class="pc90 smaller">
+			<%= link_to "Permalink", post.permalink %>
+			<%= link_to "Send Message" %>
+
+			<% if current_user?(post.user) %>
+			<%= link_to "Edit", edit_post_path(post) %>
+			<% else %>
+				<% if current_user_is_admin? %>
+				Admin: 
+				<%= link_to "Warn", '' %>
+				<%= link_to "Ban", '' %>
+				<%= link_to "Delete Post", '' %>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+</table>

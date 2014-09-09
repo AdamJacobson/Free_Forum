@@ -22,18 +22,19 @@
 	<tr>
 		<td class="pc10 smaller border-right">Post id: <%= post.id %></td>
 		<td class="pc90 smaller">
-			<%= link_to "Permalink", post.permalink %>
-			<%= link_to "Send Message" %>
+			<%= link_to "Permalink", post.permalink %> |
+			<%= link_to "PM" %>
 
 			<% if current_user?(post.user) %>
 			<%= link_to "Edit", edit_post_path(post) %>
 			<% else %>
-				<% if current_user_is_admin? %>
-				Admin: 
-				<%= link_to "Warn", '' %>
-				<%= link_to "Ban", '' %>
-				<%= link_to "Delete Post", '' %>
+			<% if current_user_is_admin? %>
+			<span>
+				| <%= link_to "Warn", '' %> |
+				<%= link_to "Ban", '' %> |
+				<%= link_to "Delete", '' %>
 				<% end %>
+			</span>
 			<% end %>
 		</td>
 	</tr>

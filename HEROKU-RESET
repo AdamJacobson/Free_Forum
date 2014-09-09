@@ -4,8 +4,10 @@ heroku pg:reset DATABASE --confirm rails-free-forum
 echo "== Migrating... =="
 heroku run rake db:migrate
 
-echo "== Populating... ==
+echo "== Populating... =="
 heroku run rake db:populate
 
-echo "== Restarting... ==
+echo "== Restarting... =="
 heroku restart
+
+heroku open

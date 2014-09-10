@@ -31,7 +31,7 @@ module SessionsHelper
 
   # Should be used in place of current_user.admin? as this will check for nil user as well
   def current_user_is_admin?
-    !current_user.nil? && current_user.admin?
+    signed_in? && current_user.admin?
   end
 
   def current_user?(user)

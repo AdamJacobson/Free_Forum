@@ -31,14 +31,8 @@ This user has no topics
 <b>Posts: </b><%= @user.posts.count %><br/>
 <%= link_to "See all posts for #{@user.username}", user_posts_path %>
 <br/><br/>
-<div >
-	<table class="posts">
-		<tr>
-			<th class="header-author">Author</th>
-			<th class="header-message">Message</th>
-		</tr>
-		<%= render @posts %>
-	</table>
+<div>
+	<%= render @posts %>
 	<br/>
 </div>
 <% else %>

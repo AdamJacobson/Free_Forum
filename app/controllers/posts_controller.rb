@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-	before_action :signed_in_user, only: [:new, :create]
+	before_action :signed_in_user, only: [:new, :create, :update, :edit]
+  before_action :can_post,       only: [:new, :create, :update, :edit]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :can_post,       only: [:create, :new, :update, :edit]
 
   add_breadcrumb "Forums", :boards_path
 
@@ -62,13 +62,15 @@ class PostsController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # Only admins can post in locked topics
+    # Determine if user can post
     def can_post
       if (params[:topic_id]).nil?
         topic = Post.find(params[:id]).topic
       else
         topic = Topic.find(params[:topic_id])
       end
+
+      # Only moderators and admins can post in locked topics
       if topic.locked? && !current_user_is_admin?
         flash[:alert] = "That topic is currently locked." 
         redirect_to(topic)

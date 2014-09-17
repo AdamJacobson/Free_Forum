@@ -1,0 +1,64 @@
+<h2>User</h2>
+
+<%= render 'shared/error_messages', object: @rank %>
+
+<table class="ranks">
+	<th class="pc20">Title</th>
+	<th class="pc10">Color</th>
+	<th class="pc10">Requirement</th>
+	<th colspan="4">Examples</th>
+	<th colspan="2">Actions</th>
+
+	<% @user_ranks.each do |rank| %>
+	<tr class="rank center">
+		<td><%= rank.title %></td>
+		<td><%= rank.color %></td>
+		<td><%= rank.requirement %> posts</td>
+		<td class="black" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="odd" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="even" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="white" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td><%= button_to "Edit", edit_rank_path(rank), :method => :get %></td>
+		<td><%= button_to "Delete Rank", rank, :method => :delete, :confirm => "Delete Rank \"#{rank.title}\"?" %></td>
+	</tr>
+	<% end %>
+	<tr class="rank">
+		<%= form_for @rank do |f| %>
+			<td><%= f.text_field :title %></td>
+
+			<td><%= f.text_field :color %></td>
+
+			<td><%= f.text_field :requirement %></td>
+			<td/>
+			<td/>
+			<td/>
+			<td><%= f.submit "Save Rank", class: "button submit" %></td>
+	<% end %>
+	</tr>
+
+</table>
+
+<br/>
+<%= button_to "New Rank", new_rank_path, :method => :get %>
+
+<h2>System</h2>
+
+<table class="ranks">
+	<th class="pc20">Title</th>
+	<th class="pc20">Color</th>
+	<th colspan="4">Examples</th>
+	<th>Actions</th>
+
+	<% @system_ranks.each do |rank| %>
+	<tr class="rank center">
+		<td><%= rank.title %></td>
+		<td><%= rank.color %></td>
+		<td class="black" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="odd" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="even" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td class="white" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+	</tr>
+	<% end %>
+
+</table>
+

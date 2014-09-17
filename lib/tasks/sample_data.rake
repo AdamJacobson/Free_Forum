@@ -12,7 +12,7 @@ namespace :db do
 
     # Create Users
     99.times do |n|
-      name  = "#{Faker::Name.first_name}#{rand(0..100)}"
+      name  = "#{Faker::Name.first_name}#{rand(0..999)}"
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
       User.create!(username: name,
@@ -44,11 +44,10 @@ namespace :db do
     end
 
     # Posts for a busy topic in Board 1
-    57.times do |n|
-      content = fake_post
+    50.times do |n|
       topic_id = 1
       user_id = rand(1..100)
-      Post.create!(content: content,
+      Post.create!(content: fake_post,
        topic_id: topic_id,
        user_id: user_id)
       topic = Topic.find(1)
@@ -56,12 +55,49 @@ namespace :db do
       topic.save
     end
 
+
+
+    # Initiate User
+    20.times do |n|
+      topic_id = rand(1..300)
+      user_id = 2
+      Post.create!(content: fake_post,
+       topic_id: topic_id,
+       user_id: user_id)
+    end
+
+    # Journeyman User
+    50.times do |n|
+      topic_id = rand(1..300)
+      user_id = 3
+      Post.create!(content: fake_post,
+       topic_id: topic_id,
+       user_id: user_id)
+    end
+
+    # Expert User
+    100.times do |n|
+      topic_id = rand(1..300)
+      user_id = 4
+      Post.create!(content: fake_post,
+       topic_id: topic_id,
+       user_id: user_id)
+    end
+
+    # Master User
+    300.times do |n|
+      topic_id = rand(1..300)
+      user_id = 5
+      Post.create!(content: fake_post,
+       topic_id: topic_id,
+       user_id: user_id)
+    end
+
     # Posts
     1000.times do |n|
-      content = fake_post
-      topic_id = rand(2..300)
-      user_id = rand(1..100)
-      Post.create!(content: content,
+      topic_id = rand(1..300)
+      user_id = rand(6..100)
+      Post.create!(content: fake_post,
        topic_id: topic_id,
        user_id: user_id)
     end

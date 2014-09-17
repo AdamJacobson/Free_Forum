@@ -1,0 +1,30 @@
+table.ranks {
+	border-collapse: collapse;
+}
+
+tr.rank {
+	border-collapse: collapse;
+	width: 100%;
+
+	border: 2px solid black;
+	td {
+		border: 2px solid black;
+		padding: 5px;
+	}
+}
+
+.new-rank {
+	text-align: right;
+}
+
+.black {
+	background-color: black;
+}
+
+.gray {
+	background-color: gray;
+}
+
+.white {
+	background-color: white;
+}

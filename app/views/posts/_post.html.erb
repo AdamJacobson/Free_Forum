@@ -12,7 +12,9 @@
 		<td class="pc10 center border-right">
 			<%= image_tag("rails.png", alt: "Rails") %><br/>
 			Posts: <%= post.user.posts.count %><br/>
-			Rank: <%= post.user.rank %></br>
+			<% if !post.user.rank_title.empty? %>
+			Rank: <%= post.user.rank_title %></br>
+			<% end %>
 		</td>
 		<td class="pc90">
 			<%= simple_format(post.content)%>

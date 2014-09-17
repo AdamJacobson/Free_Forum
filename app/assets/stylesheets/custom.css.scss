@@ -63,19 +63,6 @@ a {
 	}
 } 
 
-/* User rank links */
-
-.rank-admin {
-	color: #E00;
-
-}
-
-.rank-default {
-	color: black;
-}
-
-
-
 table, td, tr {
 	&.odd {
 		background-color: $odd-color;
@@ -110,8 +97,21 @@ textarea {
 
 /* Global rules */
 
+/* Percent width */
 .pc10 {
 	width: 10%;
+}
+
+.pc20 {
+	width: 20%;
+}
+
+.pc30 {
+	width: 30%;
+}
+
+.pc40 {
+	width: 40%;
 }
 
 .pc90 {

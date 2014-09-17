@@ -2,6 +2,7 @@ FreeForum::Application.routes.draw do
 	root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/forum_settings',   to: 'static_pages#forum_settings',   via: 'get'
 
   resources :users
 	match '/signup',  to: 'users#new',            via: 'get'
@@ -17,4 +18,6 @@ FreeForum::Application.routes.draw do
       resources :posts
     end
   end
+
+  resources :ranks
 end

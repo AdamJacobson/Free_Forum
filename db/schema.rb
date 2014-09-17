@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828220424) do
+ActiveRecord::Schema.define(version: 20140910184939) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20140828220424) do
     t.integer  "user_id"
     t.integer  "topic_id"
     t.text     "content",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ranks", force: true do |t|
+    t.string   "title"
+    t.string   "color"
+    t.integer  "requirement"
+    t.boolean  "system",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140828220424) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.boolean  "admin",           default: false
+    t.integer  "rank_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

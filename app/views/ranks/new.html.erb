@@ -1,0 +1,28 @@
+
+<div>
+	<%= form_for @rank do |f| %>
+
+	<%= render 'shared/error_messages', object: @rank %>
+
+	<table>
+		<tr class="new-rank">
+			<td>Rank Title</td>
+			<td><%= f.text_field :title %></td>
+		</tr>
+
+		<tr class="new-rank">
+			<td>Rank Color</td>
+			<td><%= f.text_field :color %></td>
+		</tr>
+
+		<tr class="new-rank">
+			<td>Required Posts</td>
+			<td><%= f.text_field :requirement %></td>
+		</tr>
+	</table>
+	
+	<br/>
+
+	<%= f.submit "Save Rank", class: "button submit" %>
+	<% end %>
+</div>

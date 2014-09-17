@@ -7,10 +7,14 @@
 	<% if signed_in? %>
 		<%= link_to "Users", users_path %> <b>|</b>
 		<%= link_to "Profile", current_user %> <b>|</b>
-		<%= link_to "Settings", edit_user_path(current_user) %> <b>|</b>
+		<%= link_to "User Settings", edit_user_path(current_user) %> <b>|</b>
 		<%= link_to "Sign out", signout_path, method: "delete" %>
 	<% else %>
 		<%= link_to "Sign in", signin_path %>
+	<% end %>
+
+	<% if current_user_is_admin? %>
+		| <%= link_to "Forum Settings", forum_settings_path %>
 	<% end %>
 
 </nav>

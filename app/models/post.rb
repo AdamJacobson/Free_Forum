@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 
 	after_create :update_topic_last_post_time
-	after_save :update_topic_last_post_time
+	after_save :update_topic_last_post_time, :update_user_rank
 
 	# Return the page index of the topic the post is on
 	def page
@@ -28,7 +28,11 @@ class Post < ActiveRecord::Base
 
 	private
 
+		def update_user_rank
+			self.user.update_user_rank
+		end
+
 		def update_topic_last_post_time
-			self.topic.update(last_replied_to_at: self.topic.posts.last.created_at)
+			self.topic.update(last_replied_to_at: self.created_at)
 		end
 end

@@ -1,5 +1,6 @@
 <tr>
-	<td><%= link_to user.username, user %></td>
+	<td><%= render 'user_link', :user => user %></td>
+	<td><%= user.rank_title %></td>
 	<td><%= user.posts.count %></td>
 	<td><%= user.topics.count %></td>
 </tr>

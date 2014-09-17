@@ -21,6 +21,20 @@ module SessionsHelper
     end
   end
 
+  # Redirect unless user is signed in and is Admin
+  def admin_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in." 
+      return
+    end
+
+    unless current_user.admin?
+      redirect_to boards_path, notice: "You do not have permission for that." 
+      return
+    end
+  end
+
   def current_user=(user)
     @current_user = user
   end

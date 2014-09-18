@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-	before_action :signed_in_user, only: [:new, :create, :update, :edit]
-  before_action :can_post,       only: [:new, :create, :update, :edit]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user,     only: [:edit, :update]
+  before_action :check_permission, only: [:new, :create, :update, :edit]
 
   add_breadcrumb "Forums", :boards_path
 
@@ -59,22 +58,54 @@ class PostsController < ApplicationController
 
     def correct_user
       @user = Post.find(params[:id]).user
-      redirect_to(root_url) unless current_user?(@user)
+      unless current_user?(@user)
+        redirect_to root_url
+        flash[:alert] = "You do not have permission to do that."
+      end
     end
 
     # Determine if user can post
-    def can_post
+    def check_permission
+
+      # Check if user is signed in
+      signed_in_user
+
       if (params[:topic_id]).nil?
         topic = Post.find(params[:id]).topic
       else
         topic = Topic.find(params[:topic_id])
       end
 
-      # Only moderators and admins can post in locked topics
-      if topic.locked? && !current_user_is_admin?
-        flash[:alert] = "That topic is currently locked." 
-        redirect_to(topic)
+      # Admins have unlimited power
+      if !current_user_is_admin?
+        # Moderators have unlimited power in their boards
+        if !current_user_is_moderator?(topic.board_id)
+
+          # Check that user has the required rank to post in the board
+          if !topic.board.required_rank.nil?
+            req_rank = Rank.find(topic.board.required_rank)
+            unless current_user.rank >= req_rank
+              flash[:alert] = "You do not have the required rank for that board." 
+              redirect_to topic
+              return
+            end
+          end
+
+          # Check if the board is unlocked
+          if topic.board.locked?
+            flash[:alert] = "That board is currently locked."
+            redirect_to topic
+            return
+          end
+
+          # Check if the topic is unlocked
+          if topic.locked?
+            flash[:alert] = "That topic is currently locked." 
+            redirect_to topic
+            return
+          end
+
+        end
       end
     end
-
 end

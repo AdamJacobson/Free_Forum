@@ -14,10 +14,12 @@
 			<td><%= f.text_field :color %></td>
 		</tr>
 
+		<% if !@rank.system? %>
 		<tr class="new-rank">
 			<td>Required Posts</td>
 			<td><%= f.text_field :requirement %></td>
 		</tr>
+		<% end %>
 	</table>
 	
 	<br/>

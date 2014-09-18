@@ -19,7 +19,6 @@ class RanksController < ApplicationController
 	def create
 		@rank = Rank.new(rank_params)
 
-
 		if @rank.save
 			redirect_to ranks_path
 			update_user_ranks
@@ -59,10 +58,21 @@ class RanksController < ApplicationController
 
   def destroy
   	rank = Rank.find(params[:id])
-  	rank.destroy
 
-  	redirect_to ranks_path
-  	update_user_ranks(rank.id)
+    boards = Board.find(:all, conditions: {required_rank: params[:id]})
+
+    # Cannot delete rank if it is currently in use
+    if boards.empty?
+      rank.destroy
+      redirect_to ranks_path
+      update_user_ranks(rank.id)
+    else
+      flash[:error] = "You cannot delete that rank because it is used by the following boards: \n"
+      boards.each do |board|
+        flash[:error] += "#{board.title} | "
+      end
+      redirect_to ranks_path
+    end
   end
 
   private

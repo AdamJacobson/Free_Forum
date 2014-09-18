@@ -18,6 +18,7 @@ module SessionsHelper
     unless signed_in?
       store_location
       redirect_to signin_url, notice: "Please sign in." 
+      return
     end
   end
 
@@ -46,6 +47,10 @@ module SessionsHelper
   # Should be used in place of current_user.admin? as this will check for nil user as well
   def current_user_is_admin?
     signed_in? && current_user.admin?
+  end
+
+  def current_user_is_moderator?(board_id)
+    signed_in? && false
   end
 
   def current_user?(user)

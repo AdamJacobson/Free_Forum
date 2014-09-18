@@ -3,7 +3,7 @@
 <%= render 'shared/error_messages', object: @rank %>
 
 <table class="ranks">
-	<th class="pc20">Title</th>
+	<th class="pc10">Title</th>
 	<th class="pc10">Color</th>
 	<th class="pc10">Requirement</th>
 	<th colspan="4">Examples</th>
@@ -19,19 +19,20 @@
 		<td class="even" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
 		<td class="white" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
 		<td><%= button_to "Edit", edit_rank_path(rank), :method => :get %></td>
-		<td><%= button_to "Delete Rank", rank, :method => :delete, :confirm => "Delete Rank \"#{rank.title}\"?" %></td>
+		<td><%= button_to "Delete Rank", rank, :method => :delete, :confirm => "Delete Rank \"#{rank.title}\"?. All user ranks will need to be recomputed which may take some time." %></td>
 	</tr>
 	<% end %>
-	<tr class="rank">
+	<tr class="rank center">
 		<%= form_for @rank do |f| %>
 			<td><%= f.text_field :title %></td>
 
 			<td><%= f.text_field :color %></td>
 
 			<td><%= f.text_field :requirement %></td>
-			<td/>
-			<td/>
-			<td/>
+			<td style="border: none"/>
+			<td style="border: none"/>
+			<td style="border: none"/>
+			<td style="border: none"/>
 			<td><%= f.submit "Save Rank", class: "button submit" %></td>
 	<% end %>
 	</tr>
@@ -57,6 +58,7 @@
 		<td class="odd" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
 		<td class="even" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
 		<td class="white" style="color: <%= rank.color %>"><span><%= rank.title %></span></td>
+		<td><%= button_to "Edit", edit_rank_path(rank), :method => :get %></td>
 	</tr>
 	<% end %>
 

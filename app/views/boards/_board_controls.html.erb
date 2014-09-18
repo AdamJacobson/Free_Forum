@@ -1,0 +1,29 @@
+<div class="admin">
+	<b>Board Controls</b>
+	<br/><br/>
+
+	<%= form_for @board do |f| %>
+
+	<%= render 'shared/error_messages', object: @board %>
+
+	Title: <%= f.text_field :title %>
+
+	<br/>
+
+	Description: <%= f.text_field :description %>
+
+	<br/>
+
+	Required Rank: <%= collection_select :board, :required_rank, Rank.where(system: false).order('requirement ASC'),
+	 :id, :title, include_blank: "No Requirement" %>
+
+	<br/>
+
+	Locked: <%= f.check_box :locked %>
+
+	<br/><br/>
+
+	<%= f.submit "Save Changes", class: "button submit", :confirm => 'Are you sure?' %>
+	<% end %>
+
+</div>

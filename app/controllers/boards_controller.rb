@@ -10,6 +10,18 @@ class BoardsController < ApplicationController
 		add_breadcrumb "#{@board.title}", board_path(@board)
 	end
 
+	def update
+		@board = Board.find(params[:id])
+
+		if @board.update_attributes(board_params)
+			flash[:success] = "Board updated"
+			redirect_to @board
+		else
+			flash[:error] = "Board failed to update"
+			redirect_to @board
+		end
+	end
+
 	def index
 		@boards = Board.all
 	end
@@ -34,6 +46,6 @@ class BoardsController < ApplicationController
 		private
 
 		def board_params
-			params.require(:board).permit(:title, :description)
+			params.require(:board).permit(:title, :description, :locked, :required_rank)
 		end
 end

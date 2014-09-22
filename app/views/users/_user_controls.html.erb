@@ -1,0 +1,29 @@
+<div class="admin">
+	<b>User Controls</b>
+	<br/><br/>
+
+	Moderating Boards
+	<table>
+		<th>Board</th>
+		<th>Actions</th>
+		<% @user.moderator_joins.each do |mod| %>
+		<% board = Board.find(mod.board_id) %>
+		<tr>
+			<td><%= link_to board.title, board_path(board) %></td>
+			<td><%= button_to "Delete", mod, :method => :delete, :confirm => "Delete moderator privelage?" %></td>
+			<tr/>
+			<% end %>
+			<tr>
+				<%= form_for @moderator_join do |f| %>
+				<%= f.hidden_field :user_id, :value => @user.id %>
+				<td>
+					<%= collection_select :moderator_join, :board_id, Board.unique_to_moderator(@user), :id, :title %>
+				</td>
+				<td>
+					<%= button_to "Save", { controller: :moderator_joins, action: :create } %>
+				</td>
+				<% end %>
+			</tr>
+		</table>
+
+	</div>

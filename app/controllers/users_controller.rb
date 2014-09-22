@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @moderator_join = ModeratorJoin.new
   	@user = User.find(params[:id])
     @posts = @user.posts.order("created_at DESC").last(5)
     @topics = @user.topics.order("created_at DESC").last(5)
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])    
 
     add_breadcrumb "#{@user.username}", user_path(@user)
     add_breadcrumb "Settings", edit_user_path(@user)

@@ -20,4 +20,6 @@ FreeForum::Application.routes.draw do
   end
 
   resources :ranks
+
+  resources :moderator_joins, only: [:new, :create, :destroy]
 end

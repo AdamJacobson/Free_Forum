@@ -20,5 +20,10 @@ class Board < ActiveRecord::Base
 		self.moderators.include?(user)
 	end
 
+	# Return all boards except that which the user is already moderating
+	def self.unique_to_moderator(user)
+		boards = Board.all.delete_if { |b| user.moderating?(b) }
+	end
+
 
 end

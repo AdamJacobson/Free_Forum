@@ -12,7 +12,7 @@
 		<td class="pc10 center border-right">
 			<%= image_tag("rails.png", alt: "Rails") %><br/>
 			<% if post.user.moderating?(post.topic.board) %>
-			<span style="<%= Rank.moderator_style %>"}>Moderator</span><br/>
+			<span style="<%= Rank.moderator_style %>">Moderator</span><br/>
 			<% end %>
 			<% if !post.user.rank_title.empty? %>
 			Rank: <%= post.user.rank_title %></br>

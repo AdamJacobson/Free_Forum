@@ -1,5 +1,11 @@
 <% provide(:title, "Profile for #{@user.username}") %>
 
+<% if current_user_is_admin? %>
+<br/>
+<%= render 'user_controls' %>
+<br/>
+<% end %>
+
 <% if !@user.rank.nil? %>
 Rank: <%= @user.rank.title %>
 <% else %>

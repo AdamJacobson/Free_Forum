@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918233047) do
+ActiveRecord::Schema.define(version: 20140922221403) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20140918233047) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "moderator_joins", ["board_id"], name: "index_moderator_joins_on_board_id"
+  add_index "moderator_joins", ["user_id"], name: "index_moderator_joins_on_user_id"
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"

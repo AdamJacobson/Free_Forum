@@ -1,7 +1,7 @@
 <% provide(:title, @board.title) %>
 <h2 class="description"><%= @board.description %></h2>
 
-<% if current_user_is_admin? %>
+<% if current_user_is_admin? || current_user_is_moderator?(@board) %>
 <br/>
 <%= render 'board_controls' %>
 <br/>

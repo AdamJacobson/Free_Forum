@@ -49,8 +49,9 @@ module SessionsHelper
     signed_in? && current_user.admin?
   end
 
-  def current_user_is_moderator?(board_id)
-    signed_in? && false
+  # Returns true if the current users is a moderator of a specified board
+  def current_user_is_moderator?(board)
+    signed_in? && current_user.moderating?(board)
   end
 
   def current_user?(user)

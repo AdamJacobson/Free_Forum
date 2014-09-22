@@ -66,10 +66,9 @@ class PostsController < ApplicationController
 
     # Determine if user can post
     def check_permission
-
       # Check if user is signed in
       signed_in_user
-
+      
       if (params[:topic_id]).nil?
         topic = Post.find(params[:id]).topic
       else
@@ -79,7 +78,7 @@ class PostsController < ApplicationController
       # Admins have unlimited power
       if !current_user_is_admin?
         # Moderators have unlimited power in their boards
-        if !current_user_is_moderator?(topic.board_id)
+        if !current_user_is_moderator?(topic.board)
 
           # Check that user has the required rank to post in the board
           if !topic.board.required_rank.nil?
@@ -104,8 +103,8 @@ class PostsController < ApplicationController
             redirect_to topic
             return
           end
-
         end
       end
     end
+    
 end

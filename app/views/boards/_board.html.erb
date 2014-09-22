@@ -4,7 +4,16 @@
 			<tr class="board-title-title"><td><%= link_to board.title, board %></td></tr>
 			<tr class="board-title-description"><td><%= board.description %></td></tr>
 			<tr><td><%= "Required Rank: #{board.rank.title}" unless board.rank.nil? %></td></tr>
-			<tr class="board-title-moderators"><td>Moderators: <%= link_to "Admin", User.find(1) %></td></tr>
+			<tr class="board-title-moderators">
+				<td>
+					<% if board.moderators.any? %>
+					Moderators: 
+						<% board.moderators.each do |mod| %>
+						<%= link_to mod.username, mod %>
+						<% end %>
+					<% end %>
+				</td>
+			</tr>
 		</table>
 	</td>
 	<td><%= board.topics.count %></td>

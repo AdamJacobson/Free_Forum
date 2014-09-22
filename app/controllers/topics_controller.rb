@@ -59,12 +59,11 @@ class TopicsController < ApplicationController
 		# Before actions
 
 		def check_permission
-
 			# Check if user is signed in
 			signed_in_user
 
 			if (params[:board_id]).nil?
-				board = Board.find(params[:id])
+				board = Board.find(params[:topic][:board_id])
 			else
 				board = Board.find(params[:board_id])
 			end
@@ -72,7 +71,7 @@ class TopicsController < ApplicationController
 			# Admins have unlimited power
       if !current_user_is_admin?
         # Moderators have unlimited power in their boards
-        if !current_user_is_moderator?(board.id)
+        if !current_user_is_moderator?(board)
 
           # Check that user has the required rank to post in the board
           if !board.required_rank.nil?
@@ -90,9 +89,8 @@ class TopicsController < ApplicationController
             redirect_to board
             return
           end
-
         end
       end
-
 		end
+
 end

@@ -1,9 +1,27 @@
 <% provide(:title, "Profile for #{@user.username}") %>
+
+<% if !@user.rank.nil? %>
+Rank: <%= @user.rank.title %>
+<% else %>
+Unranked
+<% end %>
+
+<br/><br/>
+
+<% if @user.moderating.any? %>
+User is a moderator of the following boards <br/>
+<% @user.moderating.each do |board| %><br/>
+<%= link_to board.title, board_path(board) %>
+<% end %>
+<% end %>
+
+<br/><br/>
+
 <b>Email: </b><%= @user.email %><br/>
 
 <br/>
 
-<% if @user.topics.any? %>
+<% if @topics.any? %>
 <b>Topics: </b><%= @user.topics.count %><br/>
 <%= link_to "See all topics for #{@user.username}", user_topics_path %>
 <br/><br/>
@@ -26,7 +44,7 @@ This user has no topics
 
 <br/>
 
-<% if @user.posts.any? %>
+<% if @posts.any? %>
 
 <b>Posts: </b><%= @user.posts.count %><br/>
 <%= link_to "See all posts for #{@user.username}", user_posts_path %>

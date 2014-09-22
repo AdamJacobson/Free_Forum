@@ -15,7 +15,7 @@
 	<% end %>
 	<br/>
 
-	<% if current_user_is_admin? %>
+	<% if current_user_is_admin? || current_user_is_moderator?(@board) %>
 		Sticky: <%= f.check_box :sticky %>
 		<br/>
 		Locked: <%= f.check_box :locked %>

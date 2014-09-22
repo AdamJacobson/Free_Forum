@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 	has_many :topics
 	has_many :posts
 	belongs_to :rank
+
+	has_many :moderator_joins
+	has_many :moderating, through: :moderator_joins, source: :board
 	
 	has_secure_password
 
@@ -50,5 +53,10 @@ class User < ActiveRecord::Base
 		else
 			self.rank.title
 		end
+	end
+
+	# Return true if the user is moderating a specified board
+	def moderating?(board)
+		self.moderating.include?(board)
 	end
 end

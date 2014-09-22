@@ -1,6 +1,6 @@
 <% provide(:title, "#{@board.title} | #{@topic.title}") %>
 
-<% if current_user_is_admin? %>
+<% if current_user_is_admin? || current_user_is_moderator?(@board) %>
 <br/>
 <%= render 'admin_topic_controls' %>
 <br/>

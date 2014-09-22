@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917220708) do
+ActiveRecord::Schema.define(version: 20140918233047) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20140917220708) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "required_rank"
+  end
+
+  create_table "moderator_joins", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "board_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
@@ -47,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140917220708) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_replied_to_at"
-    t.boolean  "sticky"
+    t.boolean  "sticky",             default: false
     t.boolean  "locked",             default: false
   end
 

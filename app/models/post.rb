@@ -8,8 +8,7 @@ class Post < ActiveRecord::Base
 	validates :topic, presence: true
 	validates :content, presence: true
 
-	after_create :update_topic_last_post_time
-	after_save :update_topic_last_post_time, :update_user_rank
+	after_create :update_topic_last_post_time, :update_user_rank
 
 	# Return the page index of the topic the post is on
 	def page

@@ -11,7 +11,7 @@ describe "Boards pages" do
 	describe "index" do
 		before { visit boards_path }
 
-		it { should have_content('All Boards') }
+		it { should have_content('Forums') }
 		it { should have_title(full_title('All Boards')) }
 	end
 

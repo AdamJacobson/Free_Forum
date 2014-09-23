@@ -28,7 +28,10 @@ class UsersController < ApplicationController
 
   def show
     @moderator_join = ModeratorJoin.new
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    grantable_boards = current_user.moderating
+    @available_boards = grantable_boards.delete_if { |b| @user.moderating?(b) }
+
     @posts = @user.posts.order("created_at DESC").last(5)
     @topics = @user.topics.order("created_at DESC").last(5)
 

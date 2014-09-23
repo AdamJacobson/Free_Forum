@@ -5,5 +5,5 @@ class ModeratorJoin < ActiveRecord::Base
   validates :user_id, presence: true
   validates :board_id, presence: true
 
-  validates_uniqueness_of :user_id, scope: :board_id, message: "cannot moderate a board twice. That makes no sense."
+  validates_uniqueness_of :user_id, scope: :board_id, message: "is already a moderator of that board."
 end

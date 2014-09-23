@@ -1,9 +1,17 @@
 <% provide(:title, "Profile for #{@user.username}") %>
 
-<% if current_user_is_admin? %>
-<br/>
-<%= render 'user_controls' %>
-<br/>
+<% if !current_user?(@user) %>
+	<% if current_user_is_admin? %>
+	<br/>
+	<%= render 'user_controls' %>
+	<br/>
+	<% end %>
+
+	<% if current_user.moderating.any? %>
+	<br/>
+	<%= render 'user_controls_moderator' %>
+	<br/>
+	<% end %>
 <% end %>
 
 <% if !@user.rank.nil? %>

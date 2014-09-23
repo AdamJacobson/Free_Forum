@@ -13,6 +13,7 @@
 			<td><%= button_to "Delete", mod, :method => :delete, :confirm => "Delete moderator privelage?" %></td>
 			<tr/>
 			<% end %>
+			<% if Board.unique_to_moderator(@user).any? %>
 			<tr>
 				<%= form_for @moderator_join do |f| %>
 				<%= f.hidden_field :user_id, :value => @user.id %>
@@ -24,6 +25,7 @@
 				</td>
 				<% end %>
 			</tr>
+			<% end %>
 		</table>
 
 	</div>

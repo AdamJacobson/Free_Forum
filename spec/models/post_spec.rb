@@ -9,11 +9,12 @@ describe Post do
 	subject { post }
 
 	it { should be_valid }
-	it { expect(post.page).to eq 1 }
-	it { expect(post.user).to eq user }
-	it { expect(post.topic).to eq topic }
-	it { expect(post.anchor).to eq "post-#{post.id}" }
-	it { expect(post.permalink).to eq "/topics/#{post.topic.id}?page=#{post.page}##{post.anchor}" }
+
+	its (:page) { should eq 1 }
+	its (:user) { should eq user }
+	its (:topic) { should eq topic }
+	its (:anchor) { should eq "post-#{post.id}" }
+	its (:permalink) { should eq "/topics/#{post.topic.id}?page=#{post.page}##{post.anchor}" }
 
 	describe "page number with 21 posts" do
 		before do
@@ -21,9 +22,7 @@ describe Post do
 				FactoryGirl.create(:post, user: user, topic: topic)
 			end
 		end
-		describe "when there are 21 posts" do
-			it { expect(post.topic.posts.last.page).to eq 2 }
-		end
+		it { expect(post.topic.posts.last.page).to eq 2 }
 	end
 
 	describe "when #content is missing" do

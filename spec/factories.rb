@@ -23,4 +23,9 @@ FactoryGirl.define do
     content "Content"
   end
 
+  factory :rank do
+    title "Rank"
+    color "#000000"
+    requirement 3
+  end
 end

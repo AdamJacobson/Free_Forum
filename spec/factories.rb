@@ -11,12 +11,12 @@ FactoryGirl.define do
   end
 
   factory :board do
-    title "Test Board"
-    description "Test description"
+    sequence(:title) { |n| "Board#{n}" }
+    description "Description"
   end
 
   factory :topic do
-  	title "Test Topic"
+    sequence(:title) { |n| "Topic#{n}" }
   end
 
   factory :post do
@@ -24,7 +24,7 @@ FactoryGirl.define do
   end
 
   factory :rank do
-    title "Rank"
+    sequence(:title) { |n| "Rank#{n}" }
     color "#000000"
     requirement 3
   end

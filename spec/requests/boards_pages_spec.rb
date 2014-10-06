@@ -4,7 +4,7 @@ describe "Boards pages" do
 	let(:board) { FactoryGirl.create(:board) }
 	let(:user) { FactoryGirl.create(:user) }
 	let(:admin) { FactoryGirl.create(:admin) }
-	let(:topic) { board.topics.build(title: 'Test', user_id: user.id) }
+	let(:topic) { board.topics.build(user_id: user.id) }
 
 	subject { page }
 

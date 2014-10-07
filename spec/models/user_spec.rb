@@ -173,12 +173,19 @@ end
     before { user.update_user_rank }
 
     describe "by default" do
-      its(:moderating) { should be_empty }
+      it "should not be moderating any boards" do 
+        expect(user.moderating).to be_empty
+        expect(user.moderating?(board)).to be_false
+      end
     end
 
     describe "when user is a moderator" do
       before { ModeratorJoin.create(user: user, board: board) }
       
+      it "should be moderating the board" do
+        expect(user.moderating?(board)).to be_true
+      end
+
       its(:moderating) { should include board }
       its(:rank) { should eq rank }
       its(:rank_style) { should eq "color: #{rank.color};" }

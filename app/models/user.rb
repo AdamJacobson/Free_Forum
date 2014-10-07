@@ -20,10 +20,7 @@ class User < ActiveRecord::Base
 	def update_user_rank
 
 		if self.admin?
-			self.rank = Rank.find(1)
-			# elsif user.moderator?
-				# user.rank = Rank.find(2)
-			# end
+			self.rank = Rank.admin
 		else
 			self.rank = nil
 			Rank.where(system: false).order('requirement ASC').each do |rank| 

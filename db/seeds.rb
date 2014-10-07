@@ -9,10 +9,3 @@
 Rank.create!(title: "Admin", color: "#FF0000", requirement: 0, system: true)
 Rank.create!(title: "Moderator", color: "#00FFFF", requirement: 0, system: true)
 
-Rank.create!(title: "Newbie", color: "#000000", requirement: 0)
-Rank.create!(title: "Initiate", color: "#008000", requirement: 10)
-Rank.create!(title: "Journeyman", color: "#0000FF", requirement: 15)
-Rank.create!(title: "Expert", color: "#FFA500", requirement: 20)
-Rank.create!(title: "Master", color: "#800080", requirement: 25)
-
-ModeratorJoin.create!(user_id: 2, board_id: 1)

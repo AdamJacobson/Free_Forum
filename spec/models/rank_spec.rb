@@ -10,7 +10,9 @@ describe Rank do
 	its(:system) { should be_false }
 
 	describe "with duplicate title" do
-		let(:rank2) { Rank.new(title: "Rank", requirement: 25, color: "#000000") }
+		before { Rank.create(title: "DuplicateRank", requirement: 332, color: "#000000") }
+
+		let(:rank2) { Rank.new(title: "DuplicateRank", requirement: 567, color: "#000000") }
 
 		it "should not be valid" do 
 			expect(rank2).to_not be_valid
@@ -18,7 +20,9 @@ describe Rank do
 	end
 
 	describe "with duplicate requirements" do
-		let(:rank2) { Rank.new(title: "Rank3", requirement: 25, color: "#000000") }
+		before { Rank.create(title: "Rank47", requirement: 25, color: "#000000") }
+
+		let(:rank2) { Rank.new(title: "Rank53", requirement: 25, color: "#000000") }
 
 		it "should not be valid" do 
 			expect(rank2).to_not be_valid

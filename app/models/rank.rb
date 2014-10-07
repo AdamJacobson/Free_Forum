@@ -26,4 +26,14 @@ class Rank < ActiveRecord::Base
 		"color: #{mod.color};"
 	end
 
+	# Return the Admin rank which is always the first Rank
+	def self.admin
+		Rank.first
+	end
+
+	# Return the Moderator rank which is always the second Rank
+	def self.moderator
+		Rank.find(2)
+	end
+
 end

@@ -20,5 +20,5 @@ module ApplicationHelper
 
 		return content
 	end
-
+	
 end

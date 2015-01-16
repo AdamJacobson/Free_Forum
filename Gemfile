@@ -6,7 +6,7 @@ gem 'rails', '4.0.5'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
-gem 'debugger'
+# gem 'debugger'
 gem 'breadcrumbs_on_rails'
 
 group :development, :test do

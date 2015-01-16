@@ -4,9 +4,9 @@
 		<%= form_for @moderator_join do |f| %>
 		<%= f.hidden_field :user_id, :value => @user.id %>
 		Board: <%= collection_select :moderator_join, :board_id, @available_boards, :id, :title %>
-		<%= button_to "Save", { controller: :moderator_joins, action: :create }, :confirm => "Grant moderator privelage? Only admins can undo this." %>
+		<%= button_to "Save", { controller: :moderator_joins, action: :create }, data: { confirm: "Grant moderator privelage? Only admins can undo this." } %>
 		<% end %>
 	<% else %>
-		You cannot grant this user any more moderating privelages.
+		You cannot grant this user any more moderating privilages.
 	<% end %>
 </div>

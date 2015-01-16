@@ -5,7 +5,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     User.create!(username: "Site Admin",
-     email: "example@railstutorial.org",
+     email: "user@email.com",
      password: "password",
      password_confirmation: "password",
      admin: true)
@@ -13,7 +13,7 @@ namespace :db do
     # Create Users
     99.times do |n|
       name  = "#{Faker::Name.first_name}#{rand(0..999)}"
-      email = "example-#{n+1}@railstutorial.org"
+      email = "user-#{n+1}@email.com"
       password  = "password"
       User.create!(username: name,
        email: email,
